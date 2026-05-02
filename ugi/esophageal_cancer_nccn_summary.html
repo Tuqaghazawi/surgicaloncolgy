@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esophageal & EGJ Cancer — NCCN Guidelines Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2128;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --text3: #6e7681;
+    --blue: #58a6ff;
+    --blue-bg: rgba(88,166,255,0.1);
+    --blue-border: rgba(88,166,255,0.3);
+    --green: #3fb950;
+    --green-bg: rgba(63,185,80,0.1);
+    --green-border: rgba(63,185,80,0.3);
+    --amber: #e3b341;
+    --amber-bg: rgba(227,179,65,0.1);
+    --amber-border: rgba(227,179,65,0.3);
+    --coral: #f78166;
+    --coral-bg: rgba(247,129,102,0.1);
+    --coral-border: rgba(247,129,102,0.3);
+    --purple: #a371f7;
+    --purple-bg: rgba(163,113,247,0.1);
+    --purple-border: rgba(163,113,247,0.3);
+    --teal: #39d353;
+    --teal: #56d364;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border2);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; flex-direction: column; gap: 2px; }
+  .header-title { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+  .header-sub { font-size: 12px; color: var(--text3); font-family: 'IBM Plex Mono', monospace; }
+  .badge-nccn { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 20px; background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); font-family: 'IBM Plex Mono', monospace; }
+
+  /* LAYOUT */
+  .layout { display: flex; height: calc(100vh - 57px); }
+  .sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    padding: 16px 0;
+    overflow-y: auto;
+  }
+  .content { flex: 1; overflow-y: auto; padding: 28px 32px; }
+
+  /* NAV */
+  .nav-section { padding: 0 12px 8px; font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'IBM Plex Mono', monospace; margin-top: 12px; }
+  .nav-section:first-child { margin-top: 0; }
+  .nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 14px; cursor: pointer; font-size: 13px; color: var(--text2);
+    border-left: 2px solid transparent; transition: all 0.15s;
+    user-select: none;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+  .nav-item.active { background: var(--blue-bg); color: var(--blue); border-left-color: var(--blue); }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* PANELS */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* PAGE TITLE */
+  .page-title { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; margin-bottom: 4px; }
+  .page-desc { font-size: 13px; color: var(--text2); margin-bottom: 24px; }
+
+  /* SECTION HEADERS */
+  .sec-header {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text3); padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    margin: 24px 0 14px; font-family: 'IBM Plex Mono', monospace;
+  }
+  .sec-header:first-of-type { margin-top: 0; }
+
+  /* CARDS GRID */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 16px; transition: border-color 0.15s;
+  }
+  .card:hover { border-color: var(--border2); }
+  .card-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .card-sub { font-size: 12px; color: var(--text2); margin-bottom: 10px; line-height: 1.5; }
+  .card-finding { font-size: 12px; color: var(--text3); margin-top: 10px; line-height: 1.5; border-top: 1px solid var(--border); padding-top: 8px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-family: 'IBM Plex Mono', monospace; }
+  .pill-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .pill-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .pill-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .pill-coral { background: var(--coral-bg); color: var(--coral); border: 1px solid var(--coral-border); }
+  .pill-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+
+  /* STAT CARDS */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+  .stat-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+  .stat-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+  .stat-val { font-size: 24px; font-weight: 600; color: var(--text); margin-bottom: 4px; letter-spacing: -0.02em; }
+  .stat-desc { font-size: 11px; color: var(--text2); line-height: 1.4; }
+
+  /* KEY POINTS */
+  .kp-list { display: flex; flex-direction: column; gap: 10px; }
+  .kp-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 16px; transition: border-color 0.15s;
+  }
+  .kp-item:hover { border-color: var(--border2); }
+  .kp-accent { width: 3px; border-radius: 2px; flex-shrink: 0; align-self: stretch; min-height: 20px; }
+  .kp-body { flex: 1; }
+  .kp-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .kp-text { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  /* TARGETED THERAPY CARDS */
+  .therapy-card { border-left: 3px solid; border-radius: var(--radius-lg); background: var(--bg2); border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px; }
+  .therapy-card .card-name { display: flex; align-items: center; gap: 8px; }
+  .therapy-badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+
+  /* PATHWAY SVG AREA */
+  .pathway-container { overflow-x: auto; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
+  .pathway-container svg text { font-family: 'IBM Plex Sans', sans-serif !important; }
+
+  /* Stage boxes */
+  .stage-box {
+    background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius);
+    padding: 12px 16px; margin-bottom: 10px;
+  }
+  .stage-box-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .stage-box-body { font-size: 12px; color: var(--text2); line-height: 1.5; }
+  .stage-arrow { text-align: center; color: var(--text3); font-size: 18px; margin: 4px 0; }
+
+  /* Flow pathway */
+  .pathway-flow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .pathway-col { display: flex; flex-direction: column; }
+  .pathway-col-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    font-family: 'IBM Plex Mono', monospace; padding: 6px 12px; border-radius: var(--radius);
+    margin-bottom: 10px; text-align: center;
+  }
+  .pct-local { background: rgba(63,185,80,0.15); color: #56d364; }
+  .pct-advanced { background: var(--blue-bg); color: var(--blue); }
+  .pct-meta { background: var(--amber-bg); color: var(--amber); }
+
+  .step-box {
+    background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 10px 12px; font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 6px;
+  }
+  .step-box strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 2px; font-size: 12px; }
+  .step-box.highlight-blue { border-color: var(--blue-border); background: var(--blue-bg); }
+  .step-box.highlight-green { border-color: var(--green-border); background: var(--green-bg); }
+  .step-box.highlight-amber { border-color: var(--amber-border); background: var(--amber-bg); }
+  .step-box.highlight-coral { border-color: var(--coral-border); background: var(--coral-bg); }
+  .step-box.highlight-purple { border-color: var(--purple-border); background: var(--purple-bg); }
+
+  .connector { text-align: center; color: var(--text3); font-size: 14px; margin: 3px 0; }
+
+  /* RT box */
+  .rt-note { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-top: 12px; }
+  .rt-note-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
+  .rt-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; font-size: 12px; color: var(--text2); }
+  .rt-label { font-weight: 600; color: var(--text); min-width: 36px; }
+
+  /* Biomarker table */
+  .bm-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px; }
+  .bm-table th { text-align: left; padding: 8px 10px; background: var(--bg3); color: var(--text2); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--border2); }
+  .bm-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.5; }
+  .bm-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .layout { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; padding: 8px; }
+    .nav-section { display: none; }
+    .nav-item { border-left: none; border-bottom: 2px solid transparent; padding: 6px 10px; font-size: 12px; }
+    .nav-item.active { border-bottom-color: var(--blue); border-left-color: transparent; }
+    .pathway-flow { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-title">Esophageal &amp; EGJ Cancer</div>
+    <div class="header-sub">NCCN Guidelines v2.2026 · MS-23 to MS-39</div>
+  </div>
+  <span class="badge-nccn">NCCN 2026</span>
+</div>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Overview</div>
+    <div class="nav-item active" onclick="show('pathway')">
+      <span class="nav-dot" style="background:#58a6ff"></span> Treatment pathways
+    </div>
+    <div class="nav-item" onclick="show('rt')">
+      <span class="nav-dot" style="background:#56d364"></span> Radiation &amp; RT volumes
+    </div>
+    <div class="nav-section">Systemic Therapy</div>
+    <div class="nav-item" onclick="show('trials-preop')">
+      <span class="nav-dot" style="background:#a371f7"></span> Preop / periop trials
+    </div>
+    <div class="nav-item" onclick="show('trials-defin')">
+      <span class="nav-dot" style="background:#e3b341"></span> Definitive chemoRT
+    </div>
+    <div class="nav-item" onclick="show('trials-meta')">
+      <span class="nav-dot" style="background:#f78166"></span> Metastatic trials
+    </div>
+    <div class="nav-section">Targeted</div>
+    <div class="nav-item" onclick="show('targeted')">
+      <span class="nav-dot" style="background:#58a6ff"></span> Targeted therapies
+    </div>
+    <div class="nav-item" onclick="show('biomarkers')">
+      <span class="nav-dot" style="background:#56d364"></span> Biomarker guide
+    </div>
+    <div class="nav-section">Summary</div>
+    <div class="nav-item" onclick="show('summary')">
+      <span class="nav-dot" style="background:#e3b341"></span> Key takeaways
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <!-- PATHWAY PANEL -->
+    <div id="panel-pathway" class="panel active">
+      <div class="page-title">Treatment Pathways</div>
+      <div class="page-desc">Decision flow from diagnosis through localized, locally advanced, and metastatic esophageal / EGJ cancer.</div>
+
+      <div class="pathway-flow">
+        <!-- LOCALIZED -->
+        <div class="pathway-col">
+          <div class="pathway-col-title pct-local">Localized disease</div>
+          <div class="step-box highlight-green"><strong>Staging &amp; workup</strong>CT/PET, EUS, biopsy, HER2/biomarkers</div>
+          <div class="connector">↓</div>
+          <div class="step-box"><strong>Endoscopic resection</strong>T1a/N0 — EMR or ESD</div>
+          <div class="connector">↓</div>
+          <div class="step-box"><strong>Surveillance</strong>If R0 and no adverse features</div>
+        </div>
+        <!-- LOCALLY ADVANCED -->
+        <div class="pathway-col">
+          <div class="pathway-col-title pct-advanced">Locally advanced (resectable)</div>
+          <div class="step-box highlight-blue"><strong>Preoperative chemoRT (preferred)</strong>Paclitaxel + carboplatin + 41.4 Gy (CROSS, cat 1) — OR — FOLFOX + RT (cat 1)</div>
+          <div class="connector">↓</div>
+          <div class="step-box highlight-blue"><strong>Esophagectomy</strong>R0 resection goal</div>
+          <div class="connector">↓</div>
+          <div class="step-box highlight-blue"><strong>Adjuvant nivolumab (cat 1)</strong>If residual pathologic disease post-surgery · Checkmate-577</div>
+          <div class="connector" style="color:var(--text3)">— or —</div>
+          <div class="step-box"><strong>Perioperative chemo (alternative)</strong>FOLFOX preferred (NEO-AEGIS) · FLOT for select good-PS patients</div>
+          <div class="connector" style="color:var(--text3)">Unresectable ↓</div>
+          <div class="step-box highlight-coral"><strong>Definitive chemoRT</strong>FOLFOX + 50–50.4 Gy (cat 1) · or paclitaxel + carboplatin + RT</div>
+        </div>
+        <!-- METASTATIC -->
+        <div class="pathway-col">
+          <div class="pathway-col-title pct-meta">Metastatic / advanced</div>
+          <div class="step-box highlight-amber"><strong>Biomarker testing (mandatory)</strong>HER2, PD-L1 CPS, MSI, MMR, TMB, NTRK, RET, BRAF</div>
+          <div class="connector">↓</div>
+          <div class="step-box highlight-amber"><strong>1st-line — HER2+</strong>Trastuzumab + fluoropyrimidine + platinum ± pembrolizumab</div>
+          <div class="step-box highlight-amber"><strong>1st-line — HER2– adeno</strong>Nivolumab + fluoropyrimidine + oxaliplatin (CPS≥5 cat 1; &lt;5 cat 2B)</div>
+          <div class="step-box highlight-amber"><strong>1st-line — SCC</strong>Nivolumab + chemo OR nivo + ipilimumab (regardless of CPS)</div>
+          <div class="connector">↓</div>
+          <div class="step-box"><strong>2nd-line</strong>Ramucirumab ± paclitaxel · Nivo (SCC cat 1) · Pembro (SCC CPS≥10 cat 1) · Fam-trast-derux (HER2+)</div>
+          <div class="connector">↓</div>
+          <div class="step-box"><strong>3rd-line+</strong>Trifluridine/tipiracil · FOLFIRI · DCF (dose-modified) · Single-agent taxane or irinotecan</div>
+        </div>
+      </div>
+
+      <div class="rt-note" style="margin-top:20px">
+        <div class="rt-note-title">Supportive care during chemoRT</div>
+        <div class="rt-row"><span class="rt-label">Monitor</span> Weekly vitals, weight, blood counts throughout RT course</div>
+        <div class="rt-row"><span class="rt-label">Nutrition</span> Feeding jejunostomy or NG tube if estimated caloric intake &lt;1500 kcal/day</div>
+        <div class="rt-row"><span class="rt-label">Meds</span> Prophylactic antiemetics, antacids, PPIs, antidiarrheal agents as needed</div>
+        <div class="rt-row"><span class="rt-label">Hydration</span> Adequate enteral and/or IV hydration throughout chemoradiation and recovery</div>
+      </div>
+    </div>
+
+    <!-- RT VOLUMES PANEL -->
+    <div id="panel-rt" class="panel">
+      <div class="page-title">Radiation Therapy Volumes &amp; Constraints</div>
+      <div class="page-desc">Target volume definitions, dose limits, and dose recommendations from NCCN v2.2026.</div>
+
+      <div class="sec-header">Target volume definitions</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">GTV (Gross Tumor Volume)</div>
+          <div class="card-sub">Primary tumor + involved regional lymph nodes as identified by pre-treatment diagnostic studies.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">CTV (Clinical Target Volume)</div>
+          <div class="card-sub">Primary tumor + <strong style="color:var(--text)">3–4 cm superior &amp; inferior expansion</strong> + <strong style="color:var(--text)">1 cm radial expansion.</strong><br><br>Nodal CTV: 0.5–1.5 cm expansion from nodal GTV. Include elective nodal regions (e.g., celiac axis) based on primary tumor location.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">PTV (Planning Target Volume)</div>
+          <div class="card-sub">CTV + <strong style="color:var(--text)">0.5–1 cm expansion margin</strong> to account for setup uncertainty and organ motion.</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Dose recommendations</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">Preoperative chemoRT</div>
+          <div class="card-sub">41.4 Gy (CROSS regimen) with concurrent paclitaxel + carboplatin. Standard of care for resectable locoregional disease.</div>
+          <div class="pills"><span class="pill pill-blue">Cat 1 preferred</span><span class="pill pill-green">Before surgery</span></div>
+        </div>
+        <div class="card">
+          <div class="card-name">Definitive chemoRT</div>
+          <div class="card-sub">50–50.4 Gy. ARTDECO and CONCORDE trials showed no benefit to dose escalation beyond 50 Gy. INT-0123 showed no benefit at 64.8 Gy vs. 50.4 Gy.</div>
+          <div class="pills"><span class="pill pill-amber">50–50.4 Gy standard</span><span class="pill pill-coral">No escalation benefit</span></div>
+        </div>
+      </div>
+
+      <div class="sec-header">Normal tissue dose limits</div>
+      <div class="rt-note" style="margin:0">
+        <div class="rt-row"><span class="rt-label">Heart</span> Minimize RT dose to the left ventricle. Use DVH parameters as guidance.</div>
+        <div class="rt-row"><span class="rt-label">Lungs</span> Use lung DVH parameters as predictors of pulmonary complications. Consensus on optimal criteria not yet established — see algorithm for NCCN recommended criteria.</div>
+        <div class="rt-row"><span class="rt-label">Liver / kidneys / cord</span> Minimize unnecessary RT doses. Volume of organs at risk receiving high RT doses should be limited.</div>
+        <div class="rt-row"><span class="rt-label">Note</span> Dose guidelines may be exceeded based on clinical circumstances when required for tumor coverage.</div>
+      </div>
+    </div>
+
+    <!-- PREOP TRIALS -->
+    <div id="panel-trials-preop" class="panel">
+      <div class="page-title">Preoperative &amp; Perioperative Trials</div>
+      <div class="page-desc">Landmark trials establishing preoperative chemoRT and perioperative chemotherapy strategies.</div>
+
+      <div class="sec-header">Phase III preoperative chemoRT trials</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">CROSS trial</div>
+          <div class="card-sub">Paclitaxel + carboplatin + 41.4 Gy RT → surgery vs. surgery alone. n=366; 75% adenocarcinoma, 23% SCC. Resectable T2–T3, N0–1, M0.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS: 49 vs 24 mo</span>
+            <span class="pill pill-green">HR 0.657 (P=.003)</span>
+            <span class="pill pill-amber">R0: 92% vs 69%</span>
+            <span class="pill pill-green">pCR: 29% overall</span>
+          </div>
+          <div class="card-finding">Established paclitaxel + carboplatin as CATEGORY 1 PREFERRED preop chemoRT regimen. Long-term follow-up (84-month median) confirmed median OS 48.6 vs 24 months (HR 0.68, P=.003).</div>
+        </div>
+        <div class="card">
+          <div class="card-name">CALGB 9781</div>
+          <div class="card-sub">Fluorouracil + cisplatin + RT → surgery vs. surgery alone. n=56, stage I–III esophageal cancer. Median follow-up 6 years.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 4.5 vs 1.8 yr</span>
+            <span class="pill pill-green">P=.002</span>
+            <span class="pill pill-amber">5-yr OS: 39% vs 16%</span>
+          </div>
+          <div class="card-finding">Reflects long-term survival advantage for preop chemoRT with fluorouracil + cisplatin. Fluorouracil + cisplatin remains a category 1 recommended option.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">NEOCRTEC5010</div>
+          <div class="card-sub">Preop chemoRT + surgery vs. surgery alone in locally advanced esophageal SCC. n=451 (224 preop chemoRT, 227 surgery alone).</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS: 100.1 vs 66.5 mo</span>
+            <span class="pill pill-green">HR 0.71 (P=.025)</span>
+            <span class="pill pill-amber">R0: 98.4% vs 91.2%</span>
+            <span class="pill pill-coral">DFS: 100.1 vs 41.7 mo</span>
+          </div>
+          <div class="card-finding">Confirms OS and DFS benefit of preop chemoRT over surgery alone in locally advanced SCC with acceptable toxicity. Postoperative complications similar between groups.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">NEO-AEGIS trial</div>
+          <div class="card-sub">CROSS (preop chemoRT) vs. modified MAGIC or FLOT (periop chemo) in locoregional esophageal or EGJ adenocarcinoma. n=377; median follow-up 24.5 months.</div>
+          <div class="pills">
+            <span class="pill pill-blue">3-yr OS: 56% vs 57%</span>
+            <span class="pill pill-amber">HR 1.02 (no difference)</span>
+          </div>
+          <div class="card-finding">All pathologic endpoints (pCR, N0, R0) favored preop chemoRT. Strongly suggests NONINFERIORITY of perioperative chemotherapy to preop chemoRT for adenocarcinoma — both valid options.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Stahl et al. (SCC)</div>
+          <div class="card-sub">Induction chemo → preop chemoRT + surgery vs. induction chemo → chemoRT alone in esophageal SCC. n=172.</div>
+          <div class="pills">
+            <span class="pill pill-blue">2-yr PFS: 64.3% vs 40.7%</span>
+            <span class="pill pill-amber">OS: no difference</span>
+            <span class="pill pill-coral">Treatment mortality: 12.8% vs 3.5%</span>
+          </div>
+          <div class="card-finding">Surgery improves locoregional control but not OS in SCC. Addition of surgery associated with higher treatment-related mortality in SCC patients who respond to chemoradiation.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">Checkmate-577</div>
+          <div class="card-sub">Nivolumab vs. placebo post-preop chemoRT + R0 resection with residual pathologic disease. N=794 (532 nivo, 262 placebo).</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median DFS: 22.4 vs 11 mo</span>
+            <span class="pill pill-green">HR 0.69 (P&lt;.001)</span>
+          </div>
+          <div class="card-finding">DFS benefit regardless of PD-L1 expression levels. Grade 3–4 AEs: 13% nivo vs 6% placebo. ESTABLISHED adjuvant nivolumab as CATEGORY 1 PREFERRED postoperative therapy.</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Perioperative chemotherapy trials</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">MAGIC trial</div>
+          <div class="card-sub">Periop ECF (epirubicin + cisplatin + fluorouracil) vs. surgery alone in non-metastatic stage II+ gastric or EGJ adenocarcinoma.</div>
+          <div class="pills"><span class="pill pill-blue">Improved PFS &amp; OS</span><span class="pill pill-amber">ECF no longer recommended</span></div>
+          <div class="card-finding">First landmark trial demonstrating perioperative chemotherapy benefit. ECF was the standard but has been replaced by FLOT/FOLFOX.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">FLOT4 (phase III)</div>
+          <div class="card-sub">FLOT (fluorouracil + leucovorin + oxaliplatin + docetaxel) vs. ECF perioperative in resectable gastric or EGJ adenocarcinoma ≥cT2 or N+. n=716 phase III.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS: 50 vs 35 mo</span>
+            <span class="pill pill-green">HR 0.77</span>
+            <span class="pill pill-amber">pCR: 16% vs 6%</span>
+          </div>
+          <div class="card-finding">FLOT superior to ECF; ECF no longer recommended. However, considerable toxicity with FLOT — panel recommends for select patients with GOOD PS. FOLFOX preferred for most patients with good-to-moderate PS.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">FNCLCC ACCORD 07</div>
+          <div class="card-sub">Periop fluorouracil + cisplatin vs. surgery alone. n=224; 75% adenocarcinoma of lower esophagus or EGJ. Median follow-up 5.7 years.</div>
+          <div class="pills"><span class="pill pill-blue">5-yr OS: 38% vs 24%</span><span class="pill pill-green">P=.02</span></div>
+          <div class="card-finding">Confirmed survival benefit of perioperative fluorouracil + cisplatin. Panel considers it a viable treatment option for locally advanced resectable esophageal or EGJ cancers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEFINITIVE CHEMORT TRIALS -->
+    <div id="panel-trials-defin" class="panel">
+      <div class="page-title">Definitive Chemoradiation Trials</div>
+      <div class="page-desc">Evidence base for definitive chemoRT in unresectable or medically inoperable esophageal cancer.</div>
+
+      <div class="sec-header">Landmark definitive chemoRT trials</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">RTOG 85-01</div>
+          <div class="card-sub">Chemoradiation (fluorouracil + cisplatin + RT) vs. RT alone in esophageal SCC or adenocarcinoma (cT1–cT3, N0–1, M0).</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 14 vs 9 mo</span>
+            <span class="pill pill-green">5-yr OS: 27% vs 0%</span>
+            <span class="pill pill-amber">8-yr OS: 22%</span>
+          </div>
+          <div class="card-finding">Established concurrent chemoradiation as the standard approach over RT alone for esophageal cancer. Local failure also significantly reduced in chemoRT arm (47% vs 65%).</div>
+        </div>
+        <div class="card">
+          <div class="card-name">INT-0123 (RTOG 94-05)</div>
+          <div class="card-sub">Standard RT 50.4 Gy vs. high-dose 64.8 Gy with same fluorouracil + cisplatin chemotherapy. n=218.</div>
+          <div class="pills">
+            <span class="pill pill-amber">OS: 13 vs 18 mo (P=NS)</span>
+            <span class="pill pill-coral">No benefit to dose escalation</span>
+          </div>
+          <div class="card-finding">No significant difference in median survival, 2-year OS, or locoregional failure between high-dose and standard-dose RT. Supports use of 50–50.4 Gy as standard.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">PRODIGE5/ACCORD17</div>
+          <div class="card-sub">FOLFOX vs. fluorouracil + cisplatin in definitive chemoRT for unresectable or medically unfit esophageal cancer. n=267.</div>
+          <div class="pills">
+            <span class="pill pill-blue">PFS: 9.7 vs 9.4 mo</span>
+            <span class="pill pill-amber">P=.64 (no difference)</span>
+          </div>
+          <div class="card-finding">FOLFOX preferred over fluorouracil + cisplatin for definitive chemoRT due to FEWER TREATMENT-RELATED ADVERSE EVENTS. Both are category 1 recommendations.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">ARTDECO trial</div>
+          <div class="card-sub">Dose escalation (61.6 Gy to GTV) vs. standard 50.4 Gy with concurrent paclitaxel + carboplatin. Recently completed phase III.</div>
+          <div class="pills"><span class="pill pill-coral">No benefit to dose escalation</span></div>
+          <div class="card-finding">Confirmed no local control or survival benefit from RT dose escalation beyond 50 Gy. Supports standard 50–50.4 Gy for definitive chemoRT.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">CONCORDE (PRODIGE-26)</div>
+          <div class="card-sub">Phase III trial comparing escalated RT dose vs. standard 50 Gy in definitive chemoRT for esophageal cancer.</div>
+          <div class="pills"><span class="pill pill-coral">No benefit to dose escalation</span></div>
+          <div class="card-finding">Similarly showed no improvement in local control or survival with RT dose escalation beyond 50 Gy. Consistent with ARTDECO results.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">INT-0116 (postoperative)</div>
+          <div class="card-sub">Surgery + postop chemoRT (bolus fluorouracil + leucovorin + RT) vs. surgery alone in resected gastric or EGJ adenocarcinoma. n=556, stage IB–IV M0.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 36 vs 27 mo</span>
+            <span class="pill pill-green">P=.005</span>
+            <span class="pill pill-amber">Grade 3–4 hemato AEs: 54%</span>
+          </div>
+          <div class="card-finding">Established postop chemoRT efficacy. However, the INT-0116 dosing schedule causes HIGH TOXICITY (17% discontinued; 3 deaths from toxicities). Doses/schedule used in this trial are NOT recommended by panel — see algorithm for modifications.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- METASTATIC TRIALS -->
+    <div id="panel-trials-meta" class="panel">
+      <div class="page-title">Metastatic &amp; Advanced Disease Trials</div>
+      <div class="page-desc">First-line, second-line, and subsequent therapy evidence for advanced esophageal and EGJ cancer.</div>
+
+      <div class="sec-header">First-line systemic therapy</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">Checkmate-649</div>
+          <div class="card-sub">Nivolumab + chemo (capecitabine + oxaliplatin or mFOLFOX6) vs. chemo alone in HER2-negative, previously untreated gastric, EGJ, or esophageal adenocarcinoma. n=1581.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS (CPS≥5): 14.4 vs 11.1 mo</span>
+            <span class="pill pill-green">HR 0.71 (P&lt;.0001)</span>
+            <span class="pill pill-amber">OS (all pts): 13.8 vs 11.6 mo</span>
+          </div>
+          <div class="card-finding">Nivolumab + fluoropyrimidine + oxaliplatin is CATEGORY 1 preferred for HER2-negative adenocarcinoma with PD-L1 CPS≥5. Category 2B for CPS&lt;5.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">CheckMate-648</div>
+          <div class="card-sub">Nivolumab + chemo OR nivolumab + ipilimumab vs. chemo alone in previously untreated unresectable/recurrent/metastatic esophageal SCC. n=970.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS (PD-L1≥1%): 15 vs 9 mo (nivo+chemo)</span>
+            <span class="pill pill-green">HR 0.54 (P&lt;.001)</span>
+            <span class="pill pill-amber">OS (PD-L1≥1%): 14 vs 9 mo (nivo+ipi)</span>
+          </div>
+          <div class="card-finding">Both nivo+chemo AND nivo+ipilimumab are preferred for SCC. 91% of patients had tumor cell PD-L1≥1%. NCCN recommends both regimens IRRESPECTIVE OF CPS SCORE for SCC.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">KEYNOTE-590</div>
+          <div class="card-sub">Pembrolizumab + chemo vs. placebo + chemo in locally advanced/metastatic esophageal SCC, esophageal adeno, or EGJ adeno. n=749.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS (SCC + CPS≥10): 13.9 vs 8.8 mo</span>
+            <span class="pill pill-green">HR 0.57 (P&lt;.0001)</span>
+            <span class="pill pill-amber">OS (all pts): 12.4 vs 9.8 mo</span>
+          </div>
+          <div class="card-finding">Pembrolizumab + chemo approved for SCC or adenocarcinoma with PD-L1 CPS≥10 (category 1 with cisplatin) or CPS&lt;10 (category 2B).</div>
+        </div>
+        <div class="card">
+          <div class="card-name">ToGA trial</div>
+          <div class="card-sub">Trastuzumab + chemo (cisplatin + fluorouracil or capecitabine) vs. chemo alone in HER2-overexpression positive advanced gastric or EGJ adenocarcinoma. n=594.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 13.8 vs 11 mo</span>
+            <span class="pill pill-green">P=.046</span>
+            <span class="pill pill-amber">Best in IHC 3+ or IHC 2+/FISH+</span>
+          </div>
+          <div class="card-finding">Established trastuzumab + fluoropyrimidine + platinum as STANDARD for HER2+ advanced gastroesophageal adenocarcinoma. Do NOT continue trastuzumab in 2nd-line therapy.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">KEYNOTE-811</div>
+          <div class="card-sub">Pembrolizumab vs. placebo added to trastuzumab + fluorouracil/capecitabine + cisplatin/oxaliplatin in HER2+ gastric or EGJ adenocarcinoma. Interim analysis, n=264.</div>
+          <div class="pills">
+            <span class="pill pill-blue">ORR: 74% vs 52%</span>
+            <span class="pill pill-green">P=.00006</span>
+            <span class="pill pill-amber">CR: 11% vs 3%</span>
+          </div>
+          <div class="card-finding">Pembrolizumab combined with trastuzumab + fluoropyrimidine + platinum is a PREFERRED OPTION for HER2+ advanced adenocarcinoma. Similar AE incidence in both arms (57%).</div>
+        </div>
+        <div class="card">
+          <div class="card-name">FLO / FOLFOX vs. FLP</div>
+          <div class="card-sub">FOLFOX vs. fluorouracil + cisplatin (FLP) in previously untreated advanced gastric or EGJ adenocarcinoma. n=220.</div>
+          <div class="pills">
+            <span class="pill pill-blue">ORR: 41.3% vs 16.7%</span>
+            <span class="pill pill-green">Improved OS in pts &gt;65 yr</span>
+            <span class="pill pill-amber">Less toxicity vs. cisplatin</span>
+          </div>
+          <div class="card-finding">FOLFOX offers reduced toxicity and similar/improved efficacy vs. fluorouracil + cisplatin, especially in older patients. Oxaliplatin preferred over cisplatin due to lower toxicity.</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Second-line and subsequent therapy</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-name">ATTRACTION-3</div>
+          <div class="card-sub">Nivolumab vs. chemotherapy (docetaxel or paclitaxel) in advanced esophageal SCC refractory to fluoropyrimidine- and platinum-based therapy. n=419.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 10.9 vs 8.4 mo</span>
+            <span class="pill pill-green">P=.019</span>
+            <span class="pill pill-amber">Grade 3–4 AEs: 18% vs 63%</span>
+          </div>
+          <div class="card-finding">OS benefit regardless of PD-L1 expression. CATEGORY 1 recommendation; nivolumab is preferred 2nd-line for advanced esophageal SCC. Favorable safety profile.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">KEYNOTE-181</div>
+          <div class="card-sub">Pembrolizumab vs. investigator's choice chemotherapy as 2nd-line in advanced SCC or adenocarcinoma of esophagus/EGJ. n=628.</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS (SCC + CPS≥10): 9.3 vs 6.7 mo</span>
+            <span class="pill pill-green">P=.007</span>
+            <span class="pill pill-amber">Grade 3–5 AEs: 18% vs 41%</span>
+          </div>
+          <div class="card-finding">Pembrolizumab is CATEGORY 1 PREFERRED 2nd-line therapy for advanced esophageal SCC with PD-L1 CPS≥10. Durable clinical benefit in high PD-L1 expressors.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">REGARD trial</div>
+          <div class="card-sub">Ramucirumab vs. placebo in advanced gastric or EGJ adenocarcinoma after 1st-line platinum or fluoropyrimidine-based chemotherapy. n=355.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 5.2 vs 3.8 mo</span>
+            <span class="pill pill-green">P=.047</span>
+          </div>
+          <div class="card-finding">First survival benefit demonstrated for ramucirumab as single agent. Category 1 for EGJ adenocarcinoma; category 2A for esophageal adenocarcinoma.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">RAINBOW trial</div>
+          <div class="card-sub">Ramucirumab + paclitaxel vs. paclitaxel alone in metastatic gastric or EGJ adenocarcinoma progressing after 1st-line. n=665.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 9.6 vs 7.4 mo</span>
+            <span class="pill pill-green">P&lt;.0001</span>
+            <span class="pill pill-amber">ORR: 28% vs 16%</span>
+          </div>
+          <div class="card-finding">Ramucirumab + paclitaxel (preferred) approved for 2nd-line treatment of advanced gastric or EGJ adenocarcinoma. Ramucirumab is a significant predictor of OS and PFS.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">DESTINY-Gastric01</div>
+          <div class="card-sub">Fam-trastuzumab deruxtecan-nxki vs. physician's choice chemotherapy in HER2+ gastric or EGJ adenocarcinoma with ≥2 prior lines including trastuzumab. n=188.</div>
+          <div class="pills">
+            <span class="pill pill-blue">Median OS: 12.5 vs 8.4 mo</span>
+            <span class="pill pill-green">ORR: 40.5% vs 11%</span>
+            <span class="pill pill-amber">P=.0097</span>
+          </div>
+          <div class="card-finding">Fam-trastuzumab deruxtecan-nxki approved for 2nd-line+ HER2+ adenocarcinoma. Monitor for ILD/pneumonitis (12 patients; 1 drug-related death). Careful patient selection required.</div>
+        </div>
+        <div class="card">
+          <div class="card-name">TAGS trial</div>
+          <div class="card-sub">Trifluridine + tipiracil vs. placebo in heavily pretreated metastatic gastric or EGJ adenocarcinoma. n=507 (randomized 2:1).</div>
+          <div class="pills">
+            <span class="pill pill-blue">OS improvement: +2.1 mo</span>
+            <span class="pill pill-green">HR 0.69 (P=.0003)</span>
+            <span class="pill pill-amber">Grade 3–4 neutropenia: 38%</span>
+          </div>
+          <div class="card-finding">Category 1 preferred for 3rd-line recurrent/metastatic EGJ adeno. No partial/complete responses; consider only for low-volume disease patients with minimal symptoms who can swallow pills.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TARGETED THERAPIES -->
+    <div id="panel-targeted" class="panel">
+      <div class="page-title">Targeted Therapies</div>
+      <div class="page-desc">FDA-approved targeted agents for advanced esophageal and EGJ cancer, with mechanisms and indications.</div>
+
+      <div class="sec-header">Checkpoint inhibitors</div>
+      <div class="card-grid">
+        <div class="therapy-card" style="border-left-color: #58a6ff;">
+          <div class="card-name">Nivolumab <span class="therapy-badge" style="background:var(--blue-bg);color:var(--blue);">Anti-PD-1</span></div>
+          <div class="card-sub">3 approved settings: adjuvant (post-preop chemoRT), 1st-line metastatic, 2nd-line SCC</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-blue">Adjuvant: cat 1 preferred</span>
+            <span class="pill pill-blue">1st-line adeno: CPS≥5 cat 1</span>
+            <span class="pill pill-blue">2nd-line SCC: cat 1</span>
+          </div>
+          <div class="card-finding">Adjuvant use post-preop chemoRT + R0 resection for residual disease. 1st-line: combined with fluoropyrimidine + oxaliplatin or ipilimumab for SCC. 2nd-line: proven benefit in SCC regardless of PD-L1 (ATTRACTION-3). Approved May &amp; April 2021, June 2020, May 2022.</div>
+        </div>
+        <div class="therapy-card" style="border-left-color: #a371f7;">
+          <div class="card-name">Pembrolizumab <span class="therapy-badge" style="background:var(--purple-bg);color:var(--purple);">Anti-PD-1</span></div>
+          <div class="card-sub">1st-line and 2nd-line; multiple biomarker-driven indications</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-purple">CPS≥10: cat 1 (cisplatin)</span>
+            <span class="pill pill-purple">MSI-H/dMMR: any line</span>
+            <span class="pill pill-purple">TMB-H: 2nd-line+</span>
+          </div>
+          <div class="card-finding">1st-line with chemo for SCC or adeno with CPS≥10 (cat 1) or CPS&lt;10 (cat 2B). Add to trastuzumab + chemo for HER2+ adeno (KEYNOTE-811). 2nd-line preferred for SCC CPS≥10. Tissue-agnostic: MSI-H/dMMR (2017) and TMB-H (2020) approvals.</div>
+        </div>
+      </div>
+
+      <div class="sec-header">HER2-targeted</div>
+      <div class="card-grid">
+        <div class="therapy-card" style="border-left-color: #e3b341;">
+          <div class="card-name">Trastuzumab <span class="therapy-badge" style="background:var(--amber-bg);color:var(--amber);">HER2 / ErbB2</span></div>
+          <div class="card-sub">1st-line for HER2-overexpression positive advanced adenocarcinoma</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-amber">IHC 3+ or IHC 2+/FISH+</span>
+            <span class="pill pill-amber">Cat 1 preferred (1st-line)</span>
+          </div>
+          <div class="card-finding">Combine with fluoropyrimidine + platinum (oxaliplatin preferred over cisplatin due to lower toxicity). FDA-approved biosimilar is appropriate substitute. DO NOT continue in 2nd-line therapy. May combine with pembrolizumab based on KEYNOTE-811.</div>
+        </div>
+        <div class="therapy-card" style="border-left-color: #f78166;">
+          <div class="card-name">Fam-trastuzumab deruxtecan-nxki <span class="therapy-badge" style="background:var(--coral-bg);color:var(--coral);">ADC · HER2</span></div>
+          <div class="card-sub">2nd-line+ for HER2+ adenocarcinoma after prior trastuzumab (DESTINY-Gastric01)</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-coral">2nd-line+ HER2+</span>
+            <span class="pill pill-coral">Post-trastuzumab failure</span>
+          </div>
+          <div class="card-finding">Antibody-drug conjugate: trastuzumab + cytotoxic topoisomerase I inhibitor. ORR 40.5% vs 11% chemotherapy. OS 12.5 vs 8.4 months. Monitor for ILD/pneumonitis. Careful patient selection and close toxicity monitoring required.</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Anti-angiogenic</div>
+      <div class="card-grid">
+        <div class="therapy-card" style="border-left-color: #e3b341;">
+          <div class="card-name">Ramucirumab <span class="therapy-badge" style="background:var(--amber-bg);color:var(--amber);">VEGFR-2</span></div>
+          <div class="card-sub">2nd-line for advanced gastric or EGJ adenocarcinoma (REGARD, RAINBOW trials)</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-amber">Cat 1 (EGJ adeno)</span>
+            <span class="pill pill-amber">Cat 2A (esophageal adeno)</span>
+          </div>
+          <div class="card-finding">Single agent or in combination with paclitaxel (preferred). RAINFALL trial showed NO benefit for ramucirumab in 1st-line treatment-naïve patients — NOT recommended 1st-line. Higher hypertension rates vs. placebo (16% vs 8%).</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Tumor-agnostic / biomarker-driven</div>
+      <div class="card-grid">
+        <div class="therapy-card" style="border-left-color: #56d364;">
+          <div class="card-name">Entrectinib / Larotrectinib <span class="therapy-badge" style="background:var(--green-bg);color:var(--green);">TRK inhibitor · NTRK</span></div>
+          <div class="card-sub">NTRK gene fusion-positive solid tumors (NTRK1, NTRK2, or NTRK3). Extremely rare in gastroesophageal cancers.</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-green">NTRK1/2/3 gene fusion</span>
+            <span class="pill pill-green">Larotrectinib: ORR 75%</span>
+            <span class="pill pill-green">Entrectinib: ORR 57%</span>
+          </div>
+          <div class="card-finding">Larotrectinib approved 2018 for patients ≥12 years with NTRK fusion-positive solid tumors without known resistance mutation. Entrectinib approved 2019 for NTRK fusion-positive tumors and ROS1+ NSCLC. Response duration ≥6 months in ~70%+.</div>
+        </div>
+        <div class="therapy-card" style="border-left-color: #58a6ff;">
+          <div class="card-name">Dabrafenib + Trametinib <span class="therapy-badge" style="background:var(--blue-bg);color:var(--blue);">B-Raf + MEK</span></div>
+          <div class="card-sub">BRAF V600E mutated unresectable or metastatic solid tumors (tumor agnostic, FDA June 2022)</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-blue">BRAF V600E mutation</span>
+            <span class="pill pill-blue">ORR 38–41%</span>
+            <span class="pill pill-blue">Median OS 29 mo (NCI-MATCH)</span>
+          </div>
+          <div class="card-finding">Based on BRF117019 and NCI-MATCH (EAY131-H) trials. PFS 11.4 months (NCI-MATCH). Common AEs: pyrexia, fatigue, nausea, rash, chills, headache, hemorrhage, cough, vomiting.</div>
+        </div>
+        <div class="therapy-card" style="border-left-color: #56d364;">
+          <div class="card-name">Selpercatinib <span class="therapy-badge" style="background:var(--green-bg);color:var(--green);">RET kinase inhibitor</span></div>
+          <div class="card-sub">RET gene fusion-positive locally advanced or metastatic solid tumors (tumor agnostic, FDA September 2022)</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-green">RET gene fusion</span>
+            <span class="pill pill-green">ORR 44% (LIBRETTO-001)</span>
+          </div>
+          <div class="card-finding">Based on interim analysis of LIBRETTO-001 trial (41 patients with RET fusion-positive tumors, non-NSCLC/non-thyroid). Tyrosine kinase inhibitor.</div>
+        </div>
+        <div class="therapy-card" style="border-left-color: #a371f7;">
+          <div class="card-name">Dostarlimab-gxly <span class="therapy-badge" style="background:var(--purple-bg);color:var(--purple);">Anti-PD-1</span></div>
+          <div class="card-sub">MSI-H or dMMR recurrent or advanced solid tumors progressing after prior therapy (FDA August 2021)</div>
+          <div class="pills" style="margin-bottom:8px">
+            <span class="pill pill-purple">dMMR / MSI-H</span>
+            <span class="pill pill-purple">No prior PD-1/PD-L1</span>
+            <span class="pill pill-purple">ORR 42% (GARNET)</span>
+          </div>
+          <div class="card-finding">GARNET trial: 209 patients with dMMR solid tumors (majority endometrial or GI cancers). Median response duration 35 months. 9% complete response rate, 33% partial response. Common AEs: fatigue, anemia, diarrhea, nausea; immune-mediated AEs possible.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIOMARKER GUIDE -->
+    <div id="panel-biomarkers" class="panel">
+      <div class="page-title">Biomarker Testing Guide</div>
+      <div class="page-desc">Required biomarker tests for metastatic esophageal and EGJ cancer, and how results guide therapy.</div>
+
+      <div class="sec-header">Recommended testing platform</div>
+      <div class="rt-note" style="margin-bottom:16px">
+        <div class="rt-row"><span class="rt-label" style="min-width:120px">1st priority</span> IHC / ISH / targeted PCR for HER2, PD-L1, MMR</div>
+        <div class="rt-row"><span class="rt-label" style="min-width:120px">2nd priority</span> NGS (comprehensive genomic profiling via CLIA-approved lab) for ERBB2 amplification, MSI status, TMB, NTRK fusions, RET fusions, BRAF V600E — especially when limited tissue is available</div>
+      </div>
+
+      <table class="bm-table">
+        <thead>
+          <tr>
+            <th style="width:130px">Biomarker</th>
+            <th style="width:110px">Test method</th>
+            <th style="width:100px">Threshold</th>
+            <th>Therapy implication</th>
+            <th style="width:110px">Setting</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--text)">HER2 (ERBB2)</strong></td>
+            <td>IHC / FISH</td>
+            <td>IHC 3+, or IHC 2+ + FISH+</td>
+            <td>Add trastuzumab (± pembrolizumab) to 1st-line chemo. Fam-trastuzumab deruxtecan-nxki in 2nd-line after trastuzumab failure.</td>
+            <td><span class="pill pill-amber" style="font-size:10px">1st-line · 2nd-line</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">PD-L1 CPS</strong></td>
+            <td>IHC (22C3)</td>
+            <td>CPS ≥5, ≥10</td>
+            <td>CPS≥5: nivolumab + chemo cat 1 (adeno). CPS≥10: pembrolizumab + chemo cat 1. SCC: nivolumab or pembrolizumab regardless of CPS.</td>
+            <td><span class="pill pill-blue" style="font-size:10px">1st-line</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">PD-L1 (tumor cell)</strong></td>
+            <td>IHC (28-8)</td>
+            <td>TC ≥1%</td>
+            <td>Nivolumab + chemo and nivolumab + ipilimumab for SCC (CheckMate-648). Benefit observed regardless of CPS for SCC.</td>
+            <td><span class="pill pill-blue" style="font-size:10px">1st-line SCC</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">MSI / MMR</strong></td>
+            <td>PCR/NGS (MSI); IHC (MMR)</td>
+            <td>MSI-H or dMMR</td>
+            <td>Pembrolizumab (tissue/site agnostic, 2017) or dostarlimab-gxly (2021) for 2nd-line+. Consider in any line.</td>
+            <td><span class="pill pill-purple" style="font-size:10px">Any line</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">TMB</strong></td>
+            <td>NGS</td>
+            <td>≥10 mutations/megabase (TMB-H)</td>
+            <td>Pembrolizumab for 2nd-line+ treatment of TMB-H solid tumors (2020 tumor-agnostic approval). ORR 29% in KEYNOTE-158.</td>
+            <td><span class="pill pill-purple" style="font-size:10px">2nd-line+</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">NTRK fusion</strong></td>
+            <td>PCR/NGS/FISH</td>
+            <td>NTRK1/2/3 gene fusion (any)</td>
+            <td>Larotrectinib or entrectinib (2nd-line+). Very rare in gastroesophageal cancers; one case report in gastric adenocarcinoma.</td>
+            <td><span class="pill pill-green" style="font-size:10px">2nd-line+</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">RET fusion</strong></td>
+            <td>PCR/NGS/FISH</td>
+            <td>RET gene fusion (any)</td>
+            <td>Selpercatinib (tumor-agnostic, Sept 2022). Based on LIBRETTO-001 interim analysis.</td>
+            <td><span class="pill pill-green" style="font-size:10px">2nd-line+</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text)">BRAF V600E</strong></td>
+            <td>PCR/NGS/IHC</td>
+            <td>BRAF V600E mutation</td>
+            <td>Dabrafenib + trametinib (tumor-agnostic, June 2022). ORR 38–41%; median OS 29 months in NCI-MATCH.</td>
+            <td><span class="pill pill-blue" style="font-size:10px">2nd-line+</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SUMMARY PANEL -->
+    <div id="panel-summary" class="panel">
+      <div class="page-title">Key Clinical Takeaways</div>
+      <div class="page-desc">High-yield summary of NCCN v2.2026 recommendations for esophageal and EGJ cancer.</div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">CROSS — preop chemoRT OS</div>
+          <div class="stat-val">49 mo</div>
+          <div class="stat-desc">vs. 24 months surgery alone · HR 0.657 · P=.003</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Checkmate-577 — adjuvant nivo DFS</div>
+          <div class="stat-val">22.4 mo</div>
+          <div class="stat-desc">vs. 11 months placebo · HR 0.69 · P&lt;.001</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Checkmate-649 — 1st-line nivo OS (CPS≥5)</div>
+          <div class="stat-val">14.4 mo</div>
+          <div class="stat-desc">vs. 11.1 months chemo alone · HR 0.71</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">ToGA — trastuzumab 1st-line OS</div>
+          <div class="stat-val">13.8 mo</div>
+          <div class="stat-desc">vs. 11 months chemo alone · P=.046</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Definitive chemoRT — standard RT dose</div>
+          <div class="stat-val">50 Gy</div>
+          <div class="stat-desc">50–50.4 Gy · No benefit to escalation (ARTDECO, CONCORDE, INT-0123)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">FLOT4 — periop chemo median OS</div>
+          <div class="stat-val">50 mo</div>
+          <div class="stat-desc">vs. 35 months ECF · HR 0.77 · ECF no longer recommended</div>
+        </div>
+      </div>
+
+      <div class="sec-header">Clinical recommendations</div>
+      <div class="kp-list">
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#58a6ff;"></div>
+          <div class="kp-body">
+            <div class="kp-title">Preop chemoRT is preferred for resectable locoregional disease</div>
+            <div class="kp-text">Paclitaxel + carboplatin (CROSS regimen, 41.4 Gy) and FOLFOX + RT are both CATEGORY 1 PREFERRED. Perioperative chemotherapy (FOLFOX preferred for most; FLOT for select good-PS patients) is a valid, noninferior alternative for adenocarcinoma per NEO-AEGIS. Irinotecan + cisplatin (cat 2B) and paclitaxel + fluoropyrimidine (cat 2B) are other preop options.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#56d364;"></div>
+          <div class="kp-body">
+            <div class="kp-title">Adjuvant nivolumab is category 1 preferred post-resection with residual disease</div>
+            <div class="kp-text">For patients with completely resected esophageal or EGJ cancer with residual pathologic disease following preop chemoRT, nivolumab (Checkmate-577) significantly improves DFS (22.4 vs. 11 months; HR 0.69). DFS benefit observed regardless of PD-L1 expression levels. This is the new standard of care.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#f78166;"></div>
+          <div class="kp-body">
+            <div class="kp-title">Definitive chemoRT uses FOLFOX preferred at 50–50.4 Gy</div>
+            <div class="kp-text">Reserved for unresectable disease or patients declining surgery. FOLFOX preferred over fluorouracil + cisplatin (fewer adverse events, comparable efficacy; PRODIGE5/ACCORD17). Radiation dose escalation beyond 50 Gy has NOT shown survival benefit in 3 trials (INT-0123, ARTDECO, CONCORDE). Retrospective data support paclitaxel + carboplatin as another option.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#e3b341;"></div>
+          <div class="kp-body">
+            <div class="kp-title">Biomarker testing is mandatory before initiating metastatic systemic therapy</div>
+            <div class="kp-text">Test HER2 (IHC/FISH), PD-L1 by CPS, MSI by PCR/NGS, MMR by IHC, TMB by NGS, NTRK fusion, RET fusion, and BRAF V600E. Use IHC/ISH/PCR first, then NGS as appropriate. When tissue is limited, comprehensive genomic profiling via a validated NGS assay in a CLIA-approved laboratory may be used.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#a371f7;"></div>
+          <div class="kp-body">
+            <div class="kp-title">1st-line metastatic: immunotherapy + chemotherapy is the new backbone</div>
+            <div class="kp-text">HER2-negative adenocarcinoma: nivolumab + fluoropyrimidine + oxaliplatin (CPS≥5 cat 1; CPS&lt;5 cat 2B). Esophageal SCC: nivolumab + chemo OR nivolumab + ipilimumab — BOTH preferred REGARDLESS of PD-L1/CPS score. Pembrolizumab + chemo for SCC or adeno with CPS≥10 (cat 1 with cisplatin). Oxaliplatin preferred over cisplatin in most regimens due to lower toxicity.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#e3b341;"></div>
+          <div class="kp-body">
+            <div class="kp-title">HER2-positive adenocarcinoma: trastuzumab + chemo ± pembrolizumab is standard</div>
+            <div class="kp-text">Add trastuzumab (or FDA-approved biosimilar) to fluoropyrimidine + platinum (oxaliplatin preferred). Pembrolizumab can also be added based on KEYNOTE-811 interim data (ORR 74% vs. 52%). Do NOT continue trastuzumab beyond 1st-line. In 2nd-line after trastuzumab failure, consider fam-trastuzumab deruxtecan-nxki (DESTINY-Gastric01).</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#f78166;"></div>
+          <div class="kp-body">
+            <div class="kp-title">2nd-line depends on histology, prior therapy, and biomarkers</div>
+            <div class="kp-text">SCC: nivolumab (cat 1, regardless of PD-L1; ATTRACTION-3) or pembrolizumab (CPS≥10 cat 1; KEYNOTE-181). Adenocarcinoma: ramucirumab ± paclitaxel (REGARD/RAINBOW). HER2+: fam-trastuzumab deruxtecan-nxki (DESTINY-Gastric01). MSI-H/dMMR: pembrolizumab or dostarlimab-gxly. 3 cytotoxic drugs only for medically fit patients with excellent PS.</div>
+          </div>
+        </div>
+        <div class="kp-item">
+          <div class="kp-accent" style="background:#56d364;"></div>
+          <div class="kp-body">
+            <div class="kp-title">RT planning: strict volume definitions and cardiac dose minimization</div>
+            <div class="kp-text">GTV: primary tumor + involved nodes. CTV: +3–4 cm sup/inf, +1 cm radial (primary); +0.5–1.5 cm from nodal GTV (nodal). Include elective nodal regions (celiac axis) based on primary location. PTV: CTV + 0.5–1 cm. Minimize left ventricle dose. Use lung DVH parameters to predict pulmonary complications. Dose guidelines may be exceeded based on clinical circumstances.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  document.querySelector('.content').scrollTop = 0;
+}
+</script>
+</body>
+</html>
