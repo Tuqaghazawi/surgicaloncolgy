@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Breast Cancer — KHCC Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F7F5F2;--surface:#fff;--surface2:#F2F0EC;--ink:#1A1A18;--ink-muted:#5A5855;--ink-faint:#A8A5A0;--border:#E4E0DA;--shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.04);--ca:#B5444A;--cl:#FDF0F0;--cb:#E8B4B5}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+.hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.hi{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.ht{display:flex;align-items:center;gap:1rem;padding:.875rem 0;flex-wrap:wrap}
+.back{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--ink-muted);text-decoration:none;padding:5px 12px;border:1px solid var(--border);border-radius:8px;transition:all .15s}
+.back:hover{color:var(--ink);border-color:#C8C4BC}
+.ht-mid{flex:1}.ht-mid strong{display:block;font-size:14px;font-weight:600}
+.ht-mid span{font-size:11px;color:var(--ink-faint)}
+.hbadge{font-size:11px;padding:4px 12px;border-radius:20px;background:var(--cl);color:var(--ca);border:1px solid var(--cb);font-weight:500;white-space:nowrap}
+.nw{border-top:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.nw::-webkit-scrollbar{display:none}
+.ni{display:flex;max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.nt{font-size:13px;color:var(--ink-muted);text-decoration:none;padding:.6rem .9rem;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.nt:hover{color:var(--ink)}.nt.active{color:var(--ca);border-bottom-color:var(--ca);font-weight:500}
+main{max-width:1100px;margin:0 auto;padding:1.75rem 1.5rem 5rem}
+.hero{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow)}
+.hico{width:52px;height:52px;border-radius:14px;background:var(--cl);border:1px solid var(--cb);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.hbody{flex:1}
+.heye{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ca);font-weight:600;margin-bottom:.3rem}
+.htitle{font-family:"Fraunces",serif;font-size:1.75rem;font-weight:300;letter-spacing:-.02em;margin-bottom:.35rem}
+.hdesc{font-size:14px;color:var(--ink-muted);line-height:1.6;font-weight:300}
+.hchips{display:flex;gap:6px;margin-top:.75rem;flex-wrap:wrap}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid;font-weight:500}
+.ca{background:var(--cl);color:var(--ca);border-color:var(--cb)}
+.cn{background:var(--surface2);color:var(--ink-muted);border-color:var(--border)}
+.layout{display:grid;grid-template-columns:1fr 270px;gap:1.25rem;align-items:start}
+@media(max-width:800px){.layout{grid-template-columns:1fr}}
+.sh{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:.875rem;display:flex;align-items:center;gap:.75rem}
+.sh::after{content:"";flex:1;height:1px;background:var(--border)}
+.slist{display:flex;flex-direction:column;gap:6px}
+.srow{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.875rem 1.1rem;display:flex;align-items:center;gap:.875rem;text-decoration:none;color:inherit;transition:all .15s;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.srow:hover{border-color:var(--cb);transform:translateX(2px);box-shadow:var(--shadow)}
+.srow.live{border-left:3px solid var(--ca);background:var(--cl)}
+.srow.coming{opacity:.5;pointer-events:none}
+.snum{width:28px;height:28px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-faint);flex-shrink:0;font-weight:600}
+.srow.live .snum{background:var(--ca);border-color:var(--ca);color:#fff}
+.sico{font-size:17px;width:22px;text-align:center;flex-shrink:0}
+.sbody{flex:1;min-width:0}
+.sname{font-size:13px;font-weight:600;margin-bottom:1px}
+.srow.live .sname{color:var(--ca)}
+.sdesc{font-size:11px;color:var(--ink-muted);line-height:1.4}
+.blive{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--ca);color:#fff;font-weight:600;flex-shrink:0}
+.bsoon{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--ink-faint);border:1px solid var(--border);flex-shrink:0}
+.sarr{font-size:14px;color:var(--ca);flex-shrink:0}
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:130px}
+.nb{display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:var(--cl);border:1.5px solid var(--cb);border-radius:12px;text-decoration:none;color:inherit;transition:all .15s}
+.nb:hover{background:#fff;box-shadow:var(--shadow)}
+.nbico{width:40px;height:40px;border-radius:10px;background:var(--ca);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.nbt strong{display:block;font-size:13px;font-weight:600;color:var(--ca)}
+.nbt span{font-size:11px;color:var(--ink-muted)}
+.sc{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.1rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.sc h3{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:.875rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.wbig{text-align:center;padding:.25rem 0 .875rem}
+.wnum{font-family:"Fraunces",serif;font-size:3.5rem;font-weight:300;color:var(--ca);line-height:1}
+.wsub{font-size:11px;color:var(--ink-muted);margin-top:2px}
+.wbar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin:.625rem 0 .375rem}
+.wbf{height:100%;border-radius:3px;background:var(--ca)}
+.wst{display:flex;justify-content:space-between;font-size:10px;color:var(--ink-faint)}
+.elist{list-style:none;display:flex;flex-direction:column;gap:5px}
+.elist li{font-size:12px;color:var(--ink-muted);display:flex;align-items:flex-start;gap:5px;line-height:1.5}
+.elist li::before{content:"→";color:var(--ca);flex-shrink:0;font-size:10px;margin-top:2px}
+footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;text-align:center;font-size:11px;color:var(--ink-faint);background:#fff}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hi">
+    <div class="ht">
+      <a href="index.html" class="back">← Study Hub</a>
+      <div class="ht-mid"><strong>Breast Cancer</strong><span>KHCC Year 1 Exam · High-weight Topic</span></div>
+      <span class="hbadge">18–20 marks</span>
+    </div>
+  </div>
+  <div class="nw"><nav class="ni">
+    <a href="breast.html" class="nt active">🎗️ Breast</a>
+    <a href="colorectal.html" class="nt">🩺 Colorectal</a>
+    <a href="thyroid.html" class="nt">🔬 Thyroid</a>
+    <a href="hbp.html" class="nt">🫀 HBP</a>
+    <a href="ugi.html" class="nt">🫁 Upper GI</a>
+    <a href="research.html" class="nt">📊 Research</a>
+    <a href="basic.html" class="nt">⚛️ Basic &amp; Subs.</a>
+  </nav></div>
+</header>
+<main>
+  <div class="hero">
+    <div class="hico">🎗️</div>
+    <div class="hbody">
+      <p class="heye">High-weight Topic · 18–20 Marks</p>
+      <h1 class="htitle">Breast Cancer</h1>
+      <p class="hdesc">Staging, receptor subtypes, RT planning, neoadjuvant &amp; adjuvant therapy, surgical standards, and landmark trials.</p>
+      <div class="hchips">
+        <span class="chip ca">18–20 marks</span>
+        <span class="chip cn">2 sections live</span>
+        <span class="chip cn">14 total sections</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sh">All 14 sections</p>
+      <div class="slist">
+        <div class="srow coming"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="nccn_breast_2026_summary.html" class="srow live" target="_blank"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">NCCN Breast Cancer v2.2026 — interactive 10-tab reference</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow coming"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="Breast_Cancer_Fellowship_Lecture.pptx" class="srow live" target="_blank"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Breast Cancer Fellowship Lecture — 20-slide deck</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow coming"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow coming"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb"><div class="nbico">📓</div><div class="nbt"><strong>NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="sc">
+        <h3>Exam Weight</h3>
+        <div class="wbig"><div class="wnum">18–20</div><div class="wsub">marks out of 100</div></div>
+        <div class="wbar"><div class="wbf" style="width:14%"></div></div>
+        <div class="wst"><span>Sections live</span><span>2 / 14</span></div>
+      </div>
+      <div class="sc">
+        <h3>Key Exam Topics</h3>
+        <ul class="elist">
+          <li>TNM 8th edition AJCC</li>
+          <li>HR+/HER2+/TNBC subtypes</li>
+          <li>PMRT indications</li>
+          <li>Hypofractionation — FAST-Forward</li>
+          <li>Boost indications</li>
+          <li>Dose constraints (heart, lung)</li>
+          <li>SLNB vs ALND — Z0011</li>
+          <li>Oncotype RS thresholds</li>
+          <li>NSABP B-06 &amp; B-04</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>King Hussein Cancer Center · Radiation Oncology · Year 1 Examination Preparation</footer>
+</body>
+</html>
