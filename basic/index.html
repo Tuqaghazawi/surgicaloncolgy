@@ -3,132 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic Science, Melanoma & Sarcoma — KHCC Year 1 Study Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Basic Science, Melanoma & Sarcoma — KHCC Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --card-accent:#7A6010;
-  --card-light:#FBF8EC;
-  --card-mid:#F0E4B0;
-  --card-border:#D8CC80;
-}
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F7F5F2;--surface:#FFFFFF;--surface2:#F2F0EC;--surface3:#FAFAF8;
+  --bg:#F7F5F2;--surface:#FFFFFF;--surface2:#F2F0EC;
   --ink:#1A1A18;--ink-muted:#5A5855;--ink-faint:#A8A5A0;
   --border:#E4E0DA;--border-hover:#C8C4BC;
+  --acc:#7A6010;--acc-light:#FBF8EC;--acc-border:#D8CC80;
   --shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.04);
+  --teal:#1F7A5C;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 
-/* HEADER */
-.site-header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.header-inner{max-width:1240px;margin:0 auto;padding:0 2rem}
-.header-top{display:flex;align-items:center;gap:1rem;padding:1rem 0}
-.back-btn{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-muted);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;transition:all 0.15s;background:var(--surface)}
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.header-top{display:flex;align-items:center;gap:1rem;padding:0.875rem 0}
+.back-btn{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--ink-muted);text-decoration:none;padding:5px 12px;border:1px solid var(--border);border-radius:8px;transition:all 0.15s;white-space:nowrap}
 .back-btn:hover{border-color:var(--border-hover);color:var(--ink)}
-.header-title-wrap{flex:1}
-.header-topic-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--ink)}
-.header-breadcrumb{font-size:11px;color:var(--ink-faint)}
-.header-badge{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid;font-weight:500;background:var(--card-light);color:var(--card-accent);border-color:var(--card-border)}
-
-.header-nav-wrap{border-top:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
-.header-nav-wrap::-webkit-scrollbar{display:none}
-.header-nav{display:flex;gap:0;max-width:1240px;margin:0 auto;padding:0 2rem}
-.nav-tab{font-size:13px;font-weight:400;color:var(--ink-muted);text-decoration:none;padding:0.65rem 1rem;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s;white-space:nowrap}
+.header-title{flex:1}
+.header-title strong{display:block;font-size:14px;font-weight:600}
+.header-title span{font-size:11px;color:var(--ink-faint)}
+.header-badge{font-size:11px;padding:4px 12px;border-radius:20px;background:var(--acc-light);color:var(--acc);border:1px solid var(--acc-border);font-weight:500;white-space:nowrap}
+.nav-wrap{border-top:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.nav-wrap::-webkit-scrollbar{display:none}
+.nav-inner{display:flex;max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.nav-tab{font-size:13px;color:var(--ink-muted);text-decoration:none;padding:0.6rem 0.9rem;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap}
 .nav-tab:hover{color:var(--ink)}
-.nav-tab.active{color:var(--card-accent);border-bottom-color:var(--card-accent);font-weight:500}
+.nav-tab.active{color:var(--acc);border-bottom-color:var(--acc);font-weight:500}
 
-/* MAIN */
-main{max-width:1240px;margin:0 auto;padding:2rem 2rem 5rem}
+main{max-width:1200px;margin:0 auto;padding:1.75rem 1.5rem 5rem}
 
-/* TOPIC HERO */
-.topic-hero{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:1.5rem;box-shadow:var(--shadow)}
-.topic-hero-icon{width:56px;height:56px;border-radius:14px;background:var(--card-light);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
-.topic-hero-body{flex:1}
-.topic-hero-eyebrow{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--card-accent);font-weight:600;margin-bottom:0.35rem}
-.topic-hero-title{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:300;color:var(--ink);letter-spacing:-0.02em;margin-bottom:0.4rem}
-.topic-hero-desc{font-size:14px;color:var(--ink-muted);line-height:1.6;font-weight:300}
-.topic-hero-meta{display:flex;gap:8px;margin-top:0.875rem;flex-wrap:wrap}
-.meta-chip{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid;font-weight:500}
-.meta-chip-accent{background:var(--card-light);color:var(--card-accent);border-color:var(--card-border)}
-.meta-chip-neutral{background:var(--surface2);color:var(--ink-muted);border-color:var(--border)}
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1.25rem;box-shadow:var(--shadow)}
+.hero-icon{width:52px;height:52px;border-radius:14px;background:var(--acc-light);border:1px solid var(--acc-border);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.hero-body{flex:1}
+.hero-eye{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:0.3rem}
+.hero-title{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;letter-spacing:-0.02em;margin-bottom:0.35rem}
+.hero-desc{font-size:14px;color:var(--ink-muted);line-height:1.6;font-weight:300}
+.hero-chips{display:flex;gap:6px;margin-top:0.75rem;flex-wrap:wrap}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid;font-weight:500}
+.chip-acc{background:var(--acc-light);color:var(--acc);border-color:var(--acc-border)}
+.chip-neu{background:var(--surface2);color:var(--ink-muted);border-color:var(--border)}
 
-/* LAYOUT */
-.layout{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:1.25rem;align-items:start}
+@media(max-width:860px){.layout{grid-template-columns:1fr}}
 
-/* SECTION HEADING */
-.sec-heading{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:0.875rem}
-.sec-heading::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec-head{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:0.875rem;display:flex;align-items:center;gap:0.75rem}
+.sec-head::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* SECTION ROWS */
-.sections-list{display:flex;flex-direction:column;gap:8px}
+/* Upload drop zone */
+.dropzone{border:2px dashed var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--surface)}
+.dropzone:hover,.dropzone.drag{border-color:var(--acc);background:var(--acc-light)}
+.dropzone p{font-size:13px;color:var(--ink-muted)}
+.dropzone strong{color:var(--acc)}
 
-.section-row{
-  background:var(--surface);border:1.5px solid var(--border);border-radius:12px;
-  padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;
-  text-decoration:none;color:inherit;
-  transition:all 0.15s;box-shadow:0 1px 3px rgba(0,0,0,0.04);
-}
-.section-row:hover:not(.coming){border-color:var(--card-border);box-shadow:var(--shadow);transform:translateX(2px)}
-.section-row.live{border-left:3px solid var(--card-accent);background:var(--card-light)}
-.section-row.live:hover{background:var(--surface)}
-.section-row.coming{opacity:0.55;cursor:default}
+.sections-list{display:flex;flex-direction:column;gap:6px}
 
-.row-num{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;color:var(--ink-faint);flex-shrink:0;font-weight:500;
-}
-.section-row.live .row-num{background:var(--card-accent);border-color:var(--card-accent);color:#fff}
+.sec-row{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:0.875rem 1.1rem;display:flex;align-items:center;gap:0.875rem;text-decoration:none;color:inherit;transition:all 0.15s;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.sec-row:hover:not(.coming){border-color:var(--acc-border);transform:translateX(2px);box-shadow:var(--shadow)}
+.sec-row.live{border-left:3px solid var(--acc);background:var(--acc-light)}
+.sec-row.coming{opacity:0.5;cursor:default}
+.sec-num{width:28px;height:28px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-faint);flex-shrink:0;font-weight:600}
+.sec-row.live .sec-num{background:var(--acc);border-color:var(--acc);color:#fff}
+.sec-icon{font-size:17px;width:22px;text-align:center;flex-shrink:0}
+.sec-body{flex:1;min-width:0}
+.sec-name{font-size:13px;font-weight:600;margin-bottom:1px}
+.sec-row.live .sec-name{color:var(--acc)}
+.sec-desc{font-size:11px;color:var(--ink-muted);line-height:1.4}
+.sec-files{font-size:10px;color:var(--acc);margin-top:3px;font-weight:500}
+.badge-live{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--acc);color:#fff;font-weight:600;flex-shrink:0}
+.badge-soon{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--ink-faint);border:1px solid var(--border);flex-shrink:0}
+.sec-arrow{font-size:14px;color:var(--acc);opacity:0;transition:all 0.15s;flex-shrink:0}
+.sec-row:hover:not(.coming) .sec-arrow{opacity:1;transform:translateX(2px)}
 
-.row-icon{font-size:18px;flex-shrink:0;width:24px;text-align:center}
-.row-body{flex:1;min-width:0}
-.row-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:2px}
-.row-desc{font-size:12px;color:var(--ink-muted);line-height:1.4}
-.section-row.live .row-name{color:var(--card-accent)}
+/* Sidebar */
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:130px}
+.nb-btn{display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:var(--acc-light);border:1.5px solid var(--acc-border);border-radius:12px;text-decoration:none;color:inherit;transition:all 0.15s}
+.nb-btn:hover{background:var(--surface);box-shadow:var(--shadow)}
+.nb-icon{width:40px;height:40px;border-radius:10px;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.nb-text strong{display:block;font-size:13px;font-weight:600;color:var(--acc)}
+.nb-text span{font-size:11px;color:var(--ink-muted)}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.scard h3{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:0.875rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.weight-big{text-align:center;padding:0.25rem 0 0.875rem}
+.weight-num{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:300;color:var(--acc);line-height:1}
+.weight-sub{font-size:11px;color:var(--ink-muted);margin-top:2px}
+.wbar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin:0.625rem 0 0.375rem}
+.wbar-fill{height:100%;border-radius:3px;background:var(--acc)}
+.wstats{display:flex;justify-content:space-between;font-size:10px;color:var(--ink-faint)}
+.exam-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.exam-list li{font-size:12px;color:var(--ink-muted);display:flex;align-items:flex-start;gap:5px;line-height:1.5}
+.exam-list li::before{content:'→';color:var(--acc);flex-shrink:0;font-size:10px;margin-top:2px}
 
-.row-badge{flex-shrink:0}
-.badge-live{font-size:10px;padding:3px 10px;border-radius:20px;background:var(--card-accent);color:#fff;font-weight:600;white-space:nowrap}
-.badge-soon{font-size:10px;padding:3px 10px;border-radius:20px;background:var(--surface2);color:var(--ink-faint);border:1px solid var(--border);white-space:nowrap}
+/* Uploaded files panel */
+.files-panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem}
+.files-panel h3{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:0.75rem}
+.file-item{display:flex;align-items:center;gap:7px;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);color:var(--ink-muted)}
+.file-item:last-child{border-bottom:none}
+.file-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);flex-shrink:0}
+#no-files{font-size:12px;color:var(--ink-faint);font-style:italic}
 
-.row-arrow{font-size:16px;color:var(--card-accent);opacity:0;transition:opacity 0.15s,transform 0.15s;flex-shrink:0}
-.section-row:hover:not(.coming) .row-arrow{opacity:1;transform:translateX(2px)}
-
-/* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:140px}
-
-.notebook-card{
-  background:var(--surface);border:1.5px solid var(--card-border);border-radius:14px;
-  padding:1.25rem;text-decoration:none;color:inherit;
-  display:flex;align-items:center;gap:1rem;
-  transition:all 0.15s;box-shadow:var(--shadow);
-  background:linear-gradient(135deg,var(--card-light),var(--surface));
-}
-.notebook-card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
-.notebook-card-icon{width:44px;height:44px;border-radius:12px;background:var(--card-accent);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.notebook-card-text strong{display:block;font-size:14px;font-weight:600;color:var(--card-accent);margin-bottom:2px}
-.notebook-card-text span{font-size:12px;color:var(--ink-muted)}
-
-.sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-.sidebar-card h3{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:1rem;padding-bottom:0.625rem;border-bottom:1px solid var(--border)}
-
-.weight-big{text-align:center;padding:0.5rem 0 1rem}
-.weight-big-num{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:300;color:var(--card-accent);line-height:1;display:block}
-.weight-big-label{font-size:12px;color:var(--ink-muted);margin-top:4px}
-.weight-bar{height:6px;background:var(--surface2);border-radius:4px;overflow:hidden;margin:0.75rem 0 0.5rem}
-.weight-bar-fill{height:100%;border-radius:4px;background:var(--card-accent)}
-.weight-stats{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-faint)}
-
-.exam-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.exam-list li{font-size:12px;color:var(--ink-muted);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5}
-.exam-list li::before{content:'→';color:var(--card-accent);flex-shrink:0;font-size:11px;margin-top:1px}
-
-footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:11px;color:var(--ink-faint);letter-spacing:0.04em;background:var(--surface)}
-
+footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;text-align:center;font-size:11px;color:var(--ink-faint);background:var(--surface)}
 </style>
 </head>
 <body>
@@ -137,219 +113,201 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
   <div class="header-inner">
     <div class="header-top">
       <a href="../index.html" class="back-btn">← Study Hub</a>
-      <div class="header-title-wrap">
-        <p class="header-breadcrumb">KHCC Oncology · Year 1 Exam</p>
-        <p class="header-topic-name">Basic Science, Melanoma & Sarcoma</p>
+      <div class="header-title">
+        <strong>Basic Science, Melanoma & Sarcoma</strong>
+        <span>KHCC Year 1 Exam · Supporting Topic</span>
       </div>
-      <span class="header-badge">15 marks · Supporting</span>
+      <span class="header-badge">15 marks</span>
     </div>
   </div>
-  <div class="header-nav-wrap">
-    <nav class="header-nav">
+  <div class="nav-wrap">
+    <div class="nav-inner">
       <a href="../breast/index.html" class="nav-tab ">🎗️ Breast</a>
-      <a href="../colorectal/index.html" class="nav-tab ">🩺 Colorectal</a>
-      <a href="../thyroid/index.html" class="nav-tab ">🔬 Thyroid</a>
-      <a href="../hbp/index.html" class="nav-tab ">🫀 HBP</a>
-      <a href="../ugi/index.html" class="nav-tab ">🫁 Upper GI</a>
-      <a href="../research/index.html" class="nav-tab ">📊 Research</a>
-      <a href="../basic/index.html" class="nav-tab active">⚛️ Basic & Subs.</a>
-    </nav>
+<a href="../colorectal/index.html" class="nav-tab ">🩺 Colorectal</a>
+<a href="../thyroid/index.html" class="nav-tab ">🔬 Thyroid</a>
+<a href="../hbp/index.html" class="nav-tab ">🫀 HBP</a>
+<a href="../ugi/index.html" class="nav-tab ">🫁 Upper GI</a>
+<a href="../research/index.html" class="nav-tab ">📊 Research</a>
+<a href="../basic/index.html" class="nav-tab active">⚛️ Basic & Subs.</a>
+    </div>
   </div>
 </header>
 
 <main>
-  <div class="topic-hero">
-    <div class="topic-hero-icon">⚛️</div>
-    <div class="topic-hero-body">
-      <p class="topic-hero-eyebrow">Supporting Topic · 15 Marks</p>
-      <h1 class="topic-hero-title">Basic Science, Melanoma & Sarcoma</h1>
-      <p class="topic-hero-desc">Radiobiology, LQ model, melanoma AJCC staging, immunotherapy, soft-tissue sarcoma RT, and abscopal effect.</p>
-      <div class="topic-hero-meta">
-        <span class="meta-chip meta-chip-accent">15 marks</span>
-        <span class="meta-chip meta-chip-neutral">0 sections live</span>
-        <span class="meta-chip meta-chip-neutral">14 total sections</span>
+  <div class="hero">
+    <div class="hero-icon">⚛️</div>
+    <div class="hero-body">
+      <p class="hero-eye">Supporting · 15 Marks</p>
+      <h1 class="hero-title">Basic Science, Melanoma & Sarcoma</h1>
+      <p class="hero-desc">Radiobiology, LQ model, melanoma AJCC staging, immunotherapy, soft-tissue sarcoma RT, and abscopal effect.</p>
+      <div class="hero-chips">
+        <span class="chip chip-acc" id="live-chip">15 marks</span>
+        <span class="chip chip-neu" id="files-chip">Loading files...</span>
+        <span class="chip chip-neu">14 total sections</span>
       </div>
     </div>
   </div>
 
   <div class="layout">
     <div>
-      <p class="sec-heading">All 14 sections</p>
-      <div class="sections-list">
-
-    <div class="section-row coming">
-      <div class="row-num">01</div>
-      <span class="row-icon">🧬</span>
-      <div class="row-body">
-        <p class="row-name">Basics</p>
-        <p class="row-desc">Anatomy, physiology, and essential background</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">02</div>
-      <span class="row-icon">🔭</span>
-      <div class="row-body">
-        <p class="row-name">Molecular Basis & Genetics</p>
-        <p class="row-desc">Molecular pathways, driver mutations, biomarkers</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">03</div>
-      <span class="row-icon">📐</span>
-      <div class="row-body">
-        <p class="row-name">TNM Staging</p>
-        <p class="row-desc">AJCC 8th edition staging criteria and clinical context</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">04</div>
-      <span class="row-icon">📋</span>
-      <div class="row-body">
-        <p class="row-name">NCCN Guidelines</p>
-        <p class="row-desc">Current NCCN treatment algorithms and recommendations</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">05</div>
-      <span class="row-icon">🏥</span>
-      <div class="row-body">
-        <p class="row-name">KHCC Guidelines</p>
-        <p class="row-desc">Institution-specific protocols and local adaptations</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">06</div>
-      <span class="row-icon">⚡</span>
-      <div class="row-body">
-        <p class="row-name">Fact Sheet</p>
-        <p class="row-desc">High-yield rapid review — one page essentials</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">07</div>
-      <span class="row-icon">💊</span>
-      <div class="row-body">
-        <p class="row-name">Neoadjuvant Trials</p>
-        <p class="row-desc">Key preoperative/neoadjuvant trial summaries</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">08</div>
-      <span class="row-icon">🧪</span>
-      <div class="row-body">
-        <p class="row-name">Adjuvant Trials</p>
-        <p class="row-desc">Adjuvant therapy landmark trial summaries</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">09</div>
-      <span class="row-icon">⚕️</span>
-      <div class="row-body">
-        <p class="row-name">Surgical Focus Trials</p>
-        <p class="row-desc">Trials defining surgical standards of care</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">10</div>
-      <span class="row-icon">☢️</span>
-      <div class="row-body">
-        <p class="row-name">Locoregional Management</p>
-        <p class="row-desc">RT planning, target volumes, dose constraints</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">11</div>
-      <span class="row-icon">🔪</span>
-      <div class="row-body">
-        <p class="row-name">Surgical Standards</p>
-        <p class="row-desc">Operative principles and procedural standards</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">12</div>
-      <span class="row-icon">📓</span>
-      <div class="row-body">
-        <p class="row-name">NotebookLM Discussion</p>
-        <p class="row-desc">AI-powered notebook discussion and Q&A</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">13</div>
-      <span class="row-icon">📚</span>
-      <div class="row-body">
-        <p class="row-name">Review Books Summary</p>
-        <p class="row-desc">Distilled summaries from key reference texts</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
-    <div class="section-row coming">
-      <div class="row-num">14</div>
-      <span class="row-icon">🎥</span>
-      <div class="row-body">
-        <p class="row-name">Webinars</p>
-        <p class="row-desc">Curated lectures and conference recordings</p>
-      </div>
-      <span class="row-badge"><span class="badge-soon">Coming soon</span></span>
-    </div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="sections-list" id="sections-list">
+        <!-- Built by JS -->
       </div>
     </div>
 
     <aside class="sidebar">
-
-      <a href="#" class="notebook-card">
-        <div class="notebook-card-icon">📓</div>
-        <div class="notebook-card-text">
+      <a href="#" class="nb-btn" id="nb-link">
+        <div class="nb-icon">📓</div>
+        <div class="nb-text">
           <strong>NotebookLM</strong>
           <span>Open study notebook →</span>
         </div>
       </a>
 
-      <div class="sidebar-card">
+      <div class="scard">
         <h3>Exam Weight</h3>
         <div class="weight-big">
-          <span class="weight-big-num">15</span>
-          <div class="weight-big-label">marks out of 100</div>
+          <div class="weight-num">15</div>
+          <div class="weight-sub">marks out of 100</div>
         </div>
-        <div class="weight-bar">
-          <div class="weight-bar-fill" style="width:0%"></div>
-        </div>
-        <div class="weight-stats">
-          <span>Sections live</span>
-          <span>0 / 14</span>
-        </div>
+        <div class="wbar"><div class="wbar-fill" id="progress-bar" style="width:0%"></div></div>
+        <div class="wstats"><span>Sections live</span><span id="progress-text">0 / 14</span></div>
       </div>
 
-      <div class="sidebar-card">
+      <div class="scard">
         <h3>Key Exam Topics</h3>
-        <ul class="exam-list">
-          <li>4 Rs of radiobiology</li>
-          <li>Linear-quadratic model</li>
-          <li>BED and EQD2</li>
-          <li>Oxygen effect and hypoxia</li>
-          <li>Melanoma AJCC 8th staging</li>
-          <li>Ipilimumab / pembrolizumab</li>
-          <li>STS — retroperitoneal vs extremity</li>
-          <li>Abscopal effect evidence</li>
-          <li>SBRT radiobiology</li>
-        </ul>
+        <ul class="exam-list"><li>4 Rs of radiobiology</li>
+<li>Linear-quadratic model</li>
+<li>BED and EQD2</li>
+<li>Oxygen effect and hypoxia</li>
+<li>Melanoma AJCC 8th staging</li>
+<li>Ipilimumab / pembrolizumab</li>
+<li>STS — retroperitoneal vs extremity</li>
+<li>Abscopal effect evidence</li>
+<li>SBRT radiobiology</li></ul>
       </div>
 
+      <div class="files-panel">
+        <h3>Files in this folder</h3>
+        <div id="files-list"><p id="no-files">Scanning...</p></div>
+      </div>
     </aside>
   </div>
 </main>
 
 <footer>King Hussein Cancer Center · Radiation Oncology · Year 1 Examination Preparation</footer>
+
+<script>
+// ── SECTION DEFINITIONS ──────────────────────────────────────────
+const SECTIONS = [
+  {id:"basics", icon:"🧬", name:"Basics", desc:"Anatomy, physiology, and essential background", keywords:['basic', 'anatomy', 'physiology', 'introduction', 'intro', 'background', 'overview', 'fundamental']},
+  {id:"molecular", icon:"🔭", name:"Molecular Basis & Genetics", desc:"Molecular pathways, driver mutations, biomarkers", keywords:['molecular', 'genetic', 'mutation', 'biomarker', 'pathway', 'gene', 'genomic', 'dna', 'rna', 'her2', 'egfr', 'kras', 'brca']},
+  {id:"tnm", icon:"📐", name:"TNM Staging", desc:"AJCC 8th edition staging criteria and clinical context", keywords:['tnm', 'staging', 'stage', 'ajcc', 'classification', 'tumor', 'node', 'metastasis']},
+  {id:"nccn", icon:"📋", name:"NCCN Guidelines", desc:"Current NCCN treatment algorithms and recommendations", keywords:['nccn', 'guideline', 'recommendation', 'algorithm', 'protocol', 'standard']},
+  {id:"khcc", icon:"🏥", name:"KHCC Guidelines", desc:"Institution-specific protocols and local adaptations", keywords:['khcc', 'institutional', 'local', 'jordan', 'center', 'hussein', 'hospital']},
+  {id:"factsheet", icon:"⚡", name:"Fact Sheet", desc:"High-yield rapid review — one page essentials", keywords:['factsheet', 'fact_sheet', 'fact-sheet', 'summary', 'cheatsheet', 'cheat', 'rapid', 'highyield', 'high_yield', 'quick']},
+  {id:"neoadjuvant", icon:"💊", name:"Neoadjuvant Trials", desc:"Key preoperative/neoadjuvant trial summaries", keywords:['neoadjuvant', 'nact', 'preoperative', 'pre_op', 'preop', 'induction', 'primary', 'systemic', 'neoajuvant']},
+  {id:"adjuvant", icon:"🧪", name:"Adjuvant Trials", desc:"Adjuvant therapy landmark trial summaries", keywords:['adjuvant', 'postoperative', 'post_op', 'postop', 'maintenance', 'consolidation']},
+  {id:"surgical_trials", icon:"⚕️", name:"Surgical Focus Trials", desc:"Trials defining surgical standards of care", keywords:['surgical', 'surgery', 'operative', 'resection', 'mastectomy', 'colectomy', 'gastrectomy', 'hepatectomy', 'pancreatectomy', 'trial']},
+  {id:"locoregional", icon:"☢️", name:"Locoregional Management", desc:"RT planning, target volumes, dose constraints", keywords:['locoregional', 'loco', 'radiation', 'radiotherapy', 'rt', 'ebrt', 'sbrt', 'imrt', 'vmat', 'contouring', 'ctv', 'ptv', 'gtv', 'dose', 'constraint', 'volume', 'target', 'brachytherapy', 'proton']},
+  {id:"surgical", icon:"🔪", name:"Surgical Standards", desc:"Operative principles and procedural standards", keywords:['standard', 'operative', 'technique', 'procedure', 'approach', 'margin', 'dissection', 'lymph', 'node', 'reconstruction']},
+  {id:"notebooklm", icon:"📓", name:"NotebookLM Discussion", desc:"AI-powered notebook discussion and Q&A", keywords:['notebook', 'notebooklm', 'discussion', 'chat', 'notes', 'conversation']},
+  {id:"reviews", icon:"📚", name:"Review Books Summary", desc:"Distilled summaries from key reference texts", keywords:['review', 'book', 'textbook', 'reference', 'devita', 'sabiston', 'manual', 'oxford', 'robbins', 'compiled', 'chapters', 'pdf']},
+  {id:"webinars", icon:"🎥", name:"Webinars", desc:"Curated lectures and conference recordings", keywords:['webinar', 'lecture', 'video', 'talk', 'conference', 'meeting', 'grand_rounds', 'presentation', 'seminar', 'recording', 'youtube']}
+];
+
+// ── FILES IN THIS FOLDER ─────────────────────────────────────────
+// GitHub Pages serves static files — we can't list a directory via JS.
+// So we keep a manifest: every time you upload a file, just add its
+// name to this array. That's the ONLY thing you ever need to change.
+// ─────────────────────────────────────────────────────────────────
+const FILES = [
+  // ADD FILENAMES HERE — e.g. "nccn_breast_2026.html"
+];
+
+// ── MATCH FILES TO SECTIONS ──────────────────────────────────────
+function matchSection(filename) {
+  const f = filename.toLowerCase().replace(/[^a-z0-9]/g, '_');
+  let best = null, bestScore = 0;
+  for (const sec of SECTIONS) {
+    const score = sec.keywords.filter(k => f.includes(k)).length;
+    if (score > bestScore) { bestScore = score; best = sec; }
+  }
+  return bestScore > 0 ? best : null;
+}
+
+// ── BUILD THE PAGE ───────────────────────────────────────────────
+function buildPage() {
+  // Map sections to their matched files
+  const secFiles = {};
+  for (const f of FILES) {
+    const sec = matchSection(f);
+    if (sec) {
+      if (!secFiles[sec.id]) secFiles[sec.id] = [];
+      secFiles[sec.id].push(f);
+    }
+  }
+
+  // Render sections
+  const list = document.getElementById('sections-list');
+  let liveCount = 0;
+  list.innerHTML = SECTIONS.map((sec, i) => {
+    const files = secFiles[sec.id] || [];
+    const isLive = files.length > 0;
+    if (isLive) liveCount++;
+    const num = String(i + 1).padStart(2, '0');
+
+    if (isLive) {
+      // If multiple files, link to first; show all names
+      const href = files[0];
+      const fileNames = files.map(f => `<span>${f}</span>`).join(', ');
+      return `
+      <a href="${href}" class="sec-row live" target="_blank">
+        <div class="sec-num">${num}</div>
+        <span class="sec-icon">${sec.icon}</span>
+        <div class="sec-body">
+          <p class="sec-name">${sec.name}</p>
+          <p class="sec-desc">${sec.desc}</p>
+          <p class="sec-files">📎 ${fileNames}</p>
+        </div>
+        <span class="badge-live">Live</span>
+        <span class="sec-arrow">→</span>
+      </a>`;
+    } else {
+      return `
+      <div class="sec-row coming">
+        <div class="sec-num">${num}</div>
+        <span class="sec-icon">${sec.icon}</span>
+        <div class="sec-body">
+          <p class="sec-name">${sec.name}</p>
+          <p class="sec-desc">${sec.desc}</p>
+        </div>
+        <span class="badge-soon">Coming soon</span>
+      </div>`;
+    }
+  }).join('');
+
+  // Update chips and progress
+  document.getElementById('files-chip').textContent = `${FILES.length} file${FILES.length !== 1 ? 's' : ''} uploaded`;
+  document.getElementById('live-chip').textContent = '15 marks';
+  document.getElementById('progress-bar').style.width = `${Math.round(liveCount/14*100)}%`;
+  document.getElementById('progress-text').textContent = `${liveCount} / 14`;
+
+  // Render files sidebar
+  const fl = document.getElementById('files-list');
+  if (FILES.length === 0) {
+    fl.innerHTML = '<p id="no-files" style="font-size:12px;color:var(--ink-faint);font-style:italic">No files uploaded yet</p>';
+  } else {
+    fl.innerHTML = FILES.map(f => `
+      <div class="file-item">
+        <span class="file-dot"></span>
+        <span>${f}</span>
+      </div>`).join('');
+  }
+}
+
+buildPage();
+</script>
 </body>
 </html>
