@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KHCC Oncology — Year 1 Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F2;--surface:#fff;--surface2:#F2F0EC;
+  --ink:#1A1A18;--ink-muted:#5A5855;--ink-faint:#A8A5A0;
+  --border:#E4E0DA;--shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+ 
+/* ── HEADER ── */
+.hdr{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:var(--shadow)}
+.hdr-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:.875rem 0;gap:1rem;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-mark{width:36px;height:36px;background:linear-gradient(135deg,#B5444A,#7A1F24);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.logo-text strong{display:block;font-size:14px;font-weight:600}
+.logo-text span{font-size:11px;color:var(--ink-faint)}
+.exam-chips{display:flex;gap:6px;flex-wrap:wrap}
+.ec{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;border:1px solid;white-space:nowrap}
+.ec-r{background:#FDF0F0;color:#B5444A;border-color:#E8B4B5}
+.ec-b{background:#EDF4FB;color:#1A5C8C;border-color:#90BAE0}
+.ec-g{background:#EEF8F4;color:#1F7A5C;border-color:#A0D4C4}
+ 
+/* ── TOPIC TABS ── */
+.topic-tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--border)}
+.topic-tabs::-webkit-scrollbar{display:none}
+.ttab{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-muted);padding:.65rem 1.1rem;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;font-family:inherit}
+.ttab:hover{color:var(--ink)}
+.ttab.active{color:var(--tcolor);border-bottom-color:var(--tcolor);font-weight:600}
+.ttab-dot{width:8px;height:8px;border-radius:50%;background:var(--tcolor);opacity:.3}
+.ttab.active .ttab-dot{opacity:1}
+ 
+/* ── MAIN ── */
+main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 5rem}
+.topic-panel{display:none}
+.topic-panel.active{display:block}
+ 
+/* ── TOPIC HERO ── */
+.t-hero{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;box-shadow:var(--shadow)}
+.t-icon{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.t-body{flex:1}
+.t-eye{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-bottom:.3rem}
+.t-title{font-family:"Fraunces",serif;font-size:1.65rem;font-weight:300;letter-spacing:-.02em;line-height:1.1;margin-bottom:.35rem}
+.t-desc{font-size:13px;color:var(--ink-muted);line-height:1.6;font-weight:300}
+.t-chips{display:flex;gap:6px;margin-top:.75rem;flex-wrap:wrap}
+.tc{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid;font-weight:500}
+.tc-a{border-color:var(--t-border)}
+.tc-n{background:var(--surface2);color:var(--ink-muted);border-color:var(--border)}
+ 
+/* ── LAYOUT ── */
+.layout{display:grid;grid-template-columns:1fr 260px;gap:1.25rem;align-items:start}
+@media(max-width:780px){.layout{grid-template-columns:1fr}}
+ 
+/* ── SECTION LIST ── */
+.sec-head{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:.875rem;display:flex;align-items:center;gap:.75rem}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--border)}
+.slist{display:flex;flex-direction:column;gap:6px}
+ 
+.srow{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit;transition:all .15s;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.srow:hover{border-color:var(--t-border);transform:translateX(2px);box-shadow:var(--shadow)}
+.srow.live{border-left:3px solid var(--t-color);background:var(--t-light)}
+.srow.soon{opacity:.45;pointer-events:none}
+.snum{width:26px;height:26px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-faint);flex-shrink:0;font-weight:600}
+.srow.live .snum{background:var(--t-color);border-color:var(--t-color);color:#fff}
+.sico{font-size:16px;flex-shrink:0;width:20px;text-align:center}
+.sbody{flex:1;min-width:0}
+.sname{font-size:13px;font-weight:600;margin-bottom:1px}
+.srow.live .sname{color:var(--t-color)}
+.sdesc{font-size:11px;color:var(--ink-muted);line-height:1.4}
+.blive{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--t-color);color:#fff;font-weight:600;flex-shrink:0}
+.bsoon{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--ink-faint);border:1px solid var(--border);flex-shrink:0}
+.sarr{font-size:13px;color:var(--t-color);flex-shrink:0}
+ 
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:140px}
+.nb-btn{display:flex;align-items:center;gap:.875rem;padding:.875rem 1.1rem;border-radius:11px;text-decoration:none;color:inherit;transition:all .15s;border:1.5px solid var(--t-border)}
+.nb-btn:hover{box-shadow:var(--shadow)}
+.nb-icon{width:38px;height:38px;border-radius:9px;background:var(--t-color);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.nb-text strong{display:block;font-size:13px;font-weight:600;color:var(--t-color)}
+.nb-text span{font-size:11px;color:var(--ink-muted)}
+.scard{background:#fff;border:1px solid var(--border);border-radius:11px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.scard h3{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.wbig{text-align:center;padding:.25rem 0 .75rem}
+.wnum{font-family:"Fraunces",serif;font-size:3rem;font-weight:300;color:var(--t-color);line-height:1}
+.wsub{font-size:11px;color:var(--ink-muted);margin-top:2px}
+.wbar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin:.5rem 0 .375rem}
+.wbf{height:100%;border-radius:3px}
+.wst{display:flex;justify-content:space-between;font-size:10px;color:var(--ink-faint)}
+.elist{list-style:none;display:flex;flex-direction:column;gap:4px}
+.elist li{font-size:12px;color:var(--ink-muted);display:flex;align-items:flex-start;gap:5px;line-height:1.5}
+.elist li::before{content:"→";flex-shrink:0;font-size:10px;margin-top:2px}
+ 
+footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;text-align:center;font-size:11px;color:var(--ink-faint);background:#fff;margin-top:2rem}
+@media(max-width:600px){.exam-chips{display:none}}
+</style>
+</head>
+<body>
+ 
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <div class="logo">
+        <div class="logo-mark">🏥</div>
+        <div class="logo-text">
+          <strong>KHCC Oncology</strong>
+          <span>Year 1 Study Hub</span>
+        </div>
+      </div>
+      <div class="exam-chips">
+        <span class="ec ec-r">Breast 18–20</span>
+        <span class="ec ec-r">Colorectal 18–20</span>
+        <span class="ec ec-b">Thyroid/HBP/UGI 10–15</span>
+        <span class="ec ec-g">Basic 15 · Research 5</span>
+      </div>
+    </div>
+    <div class="topic-tabs" id="tabs">
+      <button class="ttab active" onclick="show('breast',this)" style="--tcolor:#B5444A">
+        <span class="ttab-dot"></span>🎗️ Breast
+      </button>
+      <button class="ttab" onclick="show('colorectal',this)" style="--tcolor:#1F7A5C">
+        <span class="ttab-dot"></span>🩺 Colorectal
+      </button>
+      <button class="ttab" onclick="show('thyroid',this)" style="--tcolor:#6B4FA0">
+        <span class="ttab-dot"></span>🔬 Thyroid
+      </button>
+      <button class="ttab" onclick="show('hbp',this)" style="--tcolor:#1A5C8C">
+        <span class="ttab-dot"></span>🫀 HBP
+      </button>
+      <button class="ttab" onclick="show('ugi',this)" style="--tcolor:#8C5A1A">
+        <span class="ttab-dot"></span>🫁 Upper GI
+      </button>
+      <button class="ttab" onclick="show('research',this)" style="--tcolor:#2A7A3A">
+        <span class="ttab-dot"></span>📊 Research
+      </button>
+      <button class="ttab" onclick="show('basic',this)" style="--tcolor:#7A6010">
+        <span class="ttab-dot"></span>⚛️ Basic &amp; Subs.
+      </button>
+    </div>
+  </div>
+</header>
+ 
+<main>
+ 
+<!-- ══════════════════════════════════════════════
+     BREAST
+══════════════════════════════════════════════ -->
+<div id="panel-breast" class="topic-panel active" style="--t-color:#B5444A;--t-light:#FDF0F0;--t-border:#E8B4B5">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#FDF0F0;border:1px solid #E8B4B5">🎗️</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#B5444A">High-weight Topic · 18–20 Marks</p>
+      <h2 class="t-title">Breast Cancer</h2>
+      <p class="t-desc">Staging, receptor subtypes, RT planning, neoadjuvant &amp; adjuvant therapy, surgical standards, and landmark trials.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#FDF0F0;color:#B5444A;border-color:#E8B4B5">18–20 marks</span>
+        <span class="tc tc-n">2 sections live</span>
+        <span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="nccn_breast_2026_summary.html" class="srow live" target="_blank"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">NCCN Breast Cancer v2.2026 — interactive 10-tab reference</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="Breast_Cancer_Fellowship_Lecture.pptx" class="srow live" target="_blank"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Breast Cancer Fellowship Lecture — 20-slide deck</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#FDF0F0"><div class="nb-icon">📓</div><div class="nb-text"><strong>NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#B5444A">18–20</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:14%;background:#B5444A"></div></div><div class="wst"><span>Sections live</span><span>2 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist" style="--t-color:#B5444A">
+        <li>TNM 8th edition AJCC</li><li>HR+/HER2+/TNBC subtypes</li><li>PMRT indications</li>
+        <li>Hypofractionation — FAST-Forward</li><li>Boost indications</li>
+        <li>Dose constraints (heart, lung)</li><li>SLNB vs ALND — Z0011</li>
+        <li>Oncotype RS thresholds</li><li>NSABP B-06 &amp; B-04</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     COLORECTAL
+══════════════════════════════════════════════ -->
+<div id="panel-colorectal" class="topic-panel" style="--t-color:#1F7A5C;--t-light:#EEF8F4;--t-border:#A0D4C4">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#EEF8F4;border:1px solid #A0D4C4">🩺</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#1F7A5C">High-weight Topic · 18–20 Marks</p>
+      <h2 class="t-title">Colorectal Cancer</h2>
+      <p class="t-desc">Rectal and colon cancers, neoadjuvant RT/CRT, total neoadjuvant therapy, surgical anatomy, and landmark trials.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#EEF8F4;color:#1F7A5C;border-color:#A0D4C4">18–20 marks</span>
+        <span class="tc tc-n">2 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="nccn_rectal_guidelines.html" class="srow live" target="_blank"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">NCCN Rectal Cancer v1.2026 — full interactive reference</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="mucinous_rectal_ca_summary.html" class="srow live" target="_blank"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Mucinous Rectal CA — imaging and trial summary</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#EEF8F4"><div class="nb-icon" style="background:#1F7A5C">📓</div><div class="nb-text"><strong style="color:#1F7A5C">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#1F7A5C">18–20</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:14%;background:#1F7A5C"></div></div><div class="wst"><span>Sections live</span><span>2 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist" style="--t-color:#1F7A5C">
+        <li>Rectal vs colon RT indications</li><li>TNM staging AJCC 8th</li>
+        <li>Long vs short course RT</li><li>Total neoadjuvant therapy (TNT)</li>
+        <li>CRM — mesorectal fascia</li><li>RAPIDO, GERMAN, POLISH trials</li>
+        <li>Watch-and-wait evidence</li><li>Dose constraints (bowel, bladder)</li><li>TME anatomy</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     THYROID
+══════════════════════════════════════════════ -->
+<div id="panel-thyroid" class="topic-panel" style="--t-color:#6B4FA0;--t-light:#F5F0FC;--t-border:#C0A8E8">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#F5F0FC;border:1px solid #C0A8E8">🔬</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#6B4FA0">Mid-weight Topic · 10–15 Marks</p>
+      <h2 class="t-title">Thyroid Cancer</h2>
+      <p class="t-desc">Differentiated, medullary, and anaplastic subtypes. RAI therapy, EBRT, ATA risk stratification, and neck anatomy.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#F5F0FC;color:#6B4FA0;border-color:#C0A8E8">10–15 marks</span>
+        <span class="tc tc-n">0 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">Current NCCN treatment algorithms and recommendations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Key preoperative/neoadjuvant trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#F5F0FC;border-color:#C0A8E8"><div class="nb-icon" style="background:#6B4FA0">📓</div><div class="nb-text"><strong style="color:#6B4FA0">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#6B4FA0">10–15</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:0%;background:#6B4FA0"></div></div><div class="wst"><span>Sections live</span><span>0 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist">
+        <li>Histological subtype classification</li><li>AJCC 8th staging</li>
+        <li>ATA risk stratification</li><li>RAI — indications and dosing</li>
+        <li>EBRT target volumes</li><li>Medullary thyroid specifics</li>
+        <li>Anaplastic thyroid management</li><li>Cervical nodal levels I–VI</li><li>Drainage patterns</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     HBP
+══════════════════════════════════════════════ -->
+<div id="panel-hbp" class="topic-panel" style="--t-color:#1A5C8C;--t-light:#EDF4FB;--t-border:#90BAE0">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#EDF4FB;border:1px solid #90BAE0">🫀</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#1A5C8C">Mid-weight Topic · 10–15 Marks</p>
+      <h2 class="t-title">Hepatobiliary &amp; Pancreas</h2>
+      <p class="t-desc">HCC, cholangiocarcinoma, gallbladder, and pancreatic cancer. BCLC staging, SBRT, and surgical resection criteria.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#EDF4FB;color:#1A5C8C;border-color:#90BAE0">10–15 marks</span>
+        <span class="tc tc-n">2 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <a href="couinaud_liver_segments.html" class="srow live" target="_blank"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Couinaud Liver Segments — interactive anatomy diagram</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">Current NCCN treatment algorithms and recommendations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Key preoperative/neoadjuvant trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="Hepatobiliary_Pancreatic_Oncology_Compiled.pdf" class="srow live" target="_blank"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Compiled HBP reference — 314 pages from 4 textbooks</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#EDF4FB;border-color:#90BAE0"><div class="nb-icon" style="background:#1A5C8C">📓</div><div class="nb-text"><strong style="color:#1A5C8C">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#1A5C8C">10–15</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:14%;background:#1A5C8C"></div></div><div class="wst"><span>Sections live</span><span>2 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist">
+        <li>HCC — BCLC staging</li><li>Liver SBRT fractionation</li>
+        <li>Couinaud liver segments</li><li>Pancreas — borderline resectable</li>
+        <li>Cholangiocarcinoma RT</li><li>Child-Pugh score in planning</li>
+        <li>Dose constraints (liver, duodenum)</li><li>Gallbladder cancer staging</li><li>Portal vein tumor thrombus</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     UPPER GI
+══════════════════════════════════════════════ -->
+<div id="panel-ugi" class="topic-panel" style="--t-color:#8C5A1A;--t-light:#FBF5EC;--t-border:#E0BC80">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#FBF5EC;border:1px solid #E0BC80">🫁</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#8C5A1A">Mid-weight Topic · 10–15 Marks</p>
+      <h2 class="t-title">Upper GI</h2>
+      <p class="t-desc">Esophageal and gastric cancers. Siewert classification, CRT, CROSS trial, D1/D2 surgery, PD-L1 CPS scoring.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#FBF5EC;color:#8C5A1A;border-color:#E0BC80">10–15 marks</span>
+        <span class="tc tc-n">3 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="gastric_cancer_summary.html" class="srow live" target="_blank"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">Gastric Cancer comprehensive summary — tabbed reference</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="neoadjuvant_trials_esophageal_timeline.html" class="srow live" target="_blank"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Esophageal NACT trials timeline — interactive</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <a href="esophageal_cancer_nccn_summary.html" class="srow live" target="_blank"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Esophageal Cancer NCCN dashboard — 8 sections</p></div><span class="blive">Live</span><span class="sarr">→</span></a>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#FBF5EC;border-color:#E0BC80"><div class="nb-icon" style="background:#8C5A1A">📓</div><div class="nb-text"><strong style="color:#8C5A1A">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#8C5A1A">10–15</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:21%;background:#8C5A1A"></div></div><div class="wst"><span>Sections live</span><span>3 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist">
+        <li>Esophageal SCC vs adenocarcinoma</li><li>Siewert classification GEJ</li>
+        <li>Definitive vs neoadjuvant CRT</li><li>CROSS trial results</li>
+        <li>Gastric D1 vs D2 resection</li><li>FLOT / MAGIC / INT-0116</li>
+        <li>Esophageal target volume CTV</li><li>Lung dose constraints</li><li>CPS ≥5 PD-L1</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     RESEARCH
+══════════════════════════════════════════════ -->
+<div id="panel-research" class="topic-panel" style="--t-color:#2A7A3A;--t-light:#F0F8F1;--t-border:#90CC9C">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#F0F8F1;border:1px solid #90CC9C">📊</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#2A7A3A">Supporting Topic · 5 Marks</p>
+      <h2 class="t-title">Research &amp; Statistics</h2>
+      <p class="t-desc">Study design, biostatistics, RCT appraisal, hazard ratios, KM curves — high yield per revision hour.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#F0F8F1;color:#2A7A3A;border-color:#90CC9C">5 marks</span>
+        <span class="tc tc-n">0 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">Current NCCN treatment algorithms and recommendations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Key preoperative/neoadjuvant trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#F0F8F1;border-color:#90CC9C"><div class="nb-icon" style="background:#2A7A3A">📓</div><div class="nb-text"><strong style="color:#2A7A3A">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#2A7A3A">5</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:0%;background:#2A7A3A"></div></div><div class="wst"><span>Sections live</span><span>0 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist">
+        <li>RCT design and randomisation</li><li>Hazard ratio interpretation</li>
+        <li>Kaplan-Meier curves</li><li>Intent-to-treat analysis</li>
+        <li>Sensitivity and specificity</li><li>NNT and NNH</li>
+        <li>Types of bias</li><li>Meta-analysis</li><li>P-value limitations</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════════
+     BASIC
+══════════════════════════════════════════════ -->
+<div id="panel-basic" class="topic-panel" style="--t-color:#7A6010;--t-light:#FBF8EC;--t-border:#D8CC80">
+  <div class="t-hero">
+    <div class="t-icon" style="background:#FBF8EC;border:1px solid #D8CC80">⚛️</div>
+    <div class="t-body">
+      <p class="t-eye" style="color:#7A6010">Supporting Topic · 15 Marks</p>
+      <h2 class="t-title">Basic Science, Melanoma &amp; Sarcoma</h2>
+      <p class="t-desc">Radiobiology, LQ model, melanoma AJCC staging, immunotherapy, soft-tissue sarcoma RT, and abscopal effect.</p>
+      <div class="t-chips">
+        <span class="tc tc-a" style="background:#FBF8EC;color:#7A6010;border-color:#D8CC80">15 marks</span>
+        <span class="tc tc-n">0 sections live</span><span class="tc tc-n">14 sections total</span>
+      </div>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="sec-head">All 14 sections</p>
+      <div class="slist">
+        <div class="srow soon"><div class="snum">01</div><span class="sico">🧬</span><div class="sbody"><p class="sname">Basics</p><p class="sdesc">Anatomy, physiology, and essential background</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">02</div><span class="sico">🔭</span><div class="sbody"><p class="sname">Molecular Basis &amp; Genetics</p><p class="sdesc">Molecular pathways, driver mutations, biomarkers</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">03</div><span class="sico">📐</span><div class="sbody"><p class="sname">TNM Staging</p><p class="sdesc">AJCC 8th edition staging criteria and clinical context</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">04</div><span class="sico">📋</span><div class="sbody"><p class="sname">NCCN Guidelines</p><p class="sdesc">Current NCCN treatment algorithms and recommendations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">05</div><span class="sico">🏥</span><div class="sbody"><p class="sname">KHCC Guidelines</p><p class="sdesc">Institution-specific protocols and local adaptations</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">06</div><span class="sico">⚡</span><div class="sbody"><p class="sname">Fact Sheet</p><p class="sdesc">High-yield rapid review — one page essentials</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">07</div><span class="sico">💊</span><div class="sbody"><p class="sname">Neoadjuvant Trials</p><p class="sdesc">Key preoperative/neoadjuvant trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">08</div><span class="sico">🧪</span><div class="sbody"><p class="sname">Adjuvant Trials</p><p class="sdesc">Adjuvant therapy landmark trial summaries</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">09</div><span class="sico">⚕️</span><div class="sbody"><p class="sname">Surgical Focus Trials</p><p class="sdesc">Trials defining surgical standards of care</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">10</div><span class="sico">☢️</span><div class="sbody"><p class="sname">Locoregional Management</p><p class="sdesc">RT planning, target volumes, dose constraints</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">11</div><span class="sico">🔪</span><div class="sbody"><p class="sname">Surgical Standards</p><p class="sdesc">Operative principles and procedural standards</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">12</div><span class="sico">📓</span><div class="sbody"><p class="sname">NotebookLM Discussion</p><p class="sdesc">AI-powered notebook discussion and Q&amp;A</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">13</div><span class="sico">📚</span><div class="sbody"><p class="sname">Review Books Summary</p><p class="sdesc">Distilled summaries from key reference texts</p></div><span class="bsoon">Coming soon</span></div>
+        <div class="srow soon"><div class="snum">14</div><span class="sico">🎥</span><div class="sbody"><p class="sname">Webinars</p><p class="sdesc">Curated lectures and conference recordings</p></div><span class="bsoon">Coming soon</span></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="nb-btn" style="background:#FBF8EC;border-color:#D8CC80"><div class="nb-icon" style="background:#7A6010">📓</div><div class="nb-text"><strong style="color:#7A6010">NotebookLM</strong><span>Open study notebook →</span></div></a>
+      <div class="scard"><h3>Exam Weight</h3><div class="wbig"><div class="wnum" style="color:#7A6010">15</div><div class="wsub">marks out of 100</div></div><div class="wbar"><div class="wbf" style="width:0%;background:#7A6010"></div></div><div class="wst"><span>Sections live</span><span>0 / 14</span></div></div>
+      <div class="scard"><h3>Key Exam Topics</h3><ul class="elist">
+        <li>4 Rs of radiobiology</li><li>Linear-quadratic model</li>
+        <li>BED and EQD2</li><li>Oxygen effect and hypoxia</li>
+        <li>Melanoma AJCC 8th staging</li><li>Ipilimumab / pembrolizumab</li>
+        <li>STS — retroperitoneal vs extremity</li><li>Abscopal effect evidence</li><li>SBRT radiobiology</li>
+      </ul></div>
+    </aside>
+  </div>
+</div>
+ 
+</main>
+ 
+<footer>King Hussein Cancer Center · Radiation Oncology · Year 1 Examination Preparation · Updated as you study</footer>
+ 
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ttab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
