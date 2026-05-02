@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Non-Invasive Breast Cancer — DCIS & Premalignant Lesions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0a0e1a;
+  --navy2:#0f1525;
+  --navy3:#151e33;
+  --card:#111827;
+  --card2:#1a2235;
+  --border:#1f2d45;
+  --teal:#2dd4bf;
+  --teal2:#14b8a6;
+  --teal-dim:rgba(45,212,191,.12);
+  --blue:#60a5fa;
+  --blue-dim:rgba(96,165,250,.12);
+  --rose:#fb7185;
+  --rose-dim:rgba(251,113,133,.1);
+  --amber:#fbbf24;
+  --amber-dim:rgba(251,191,36,.1);
+  --violet:#a78bfa;
+  --violet-dim:rgba(167,139,250,.1);
+  --green:#4ade80;
+  --green-dim:rgba(74,222,128,.1);
+  --orange:#fb923c;
+  --orange-dim:rgba(251,146,60,.1);
+  --text:#e2e8f0;
+  --muted:#94a3b8;
+  --faint:#475569;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;min-height:100vh;overflow-x:hidden}
+
+/* ── BACKGROUND ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(45,212,191,.06) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 40% at 80% 80%,rgba(96,165,250,.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── TOP NAV ── */
+.topnav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,14,26,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.topnav-brand{display:flex;align-items:center;gap:.75rem}
+.topnav-logo{width:32px;height:32px;border-radius:8px;background:var(--teal-dim);border:1px solid var(--teal);display:grid;place-items:center;font-size:1rem}
+.topnav-name{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--text)}
+.topnav-sub{font-size:.75rem;color:var(--muted)}
+.topnav-links{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.topnav-links a{
+  font-size:.75rem;font-weight:500;padding:.3rem .75rem;border-radius:999px;
+  color:var(--muted);border:1px solid transparent;text-decoration:none;
+  transition:all .2s;white-space:nowrap;
+}
+.topnav-links a:hover{color:var(--teal);border-color:var(--teal);background:var(--teal-dim)}
+.topnav-links a.active{color:var(--teal);border-color:var(--teal);background:var(--teal-dim)}
+
+/* ── BACK LINK ── */
+.back-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:var(--muted);font-size:.85rem;text-decoration:none;
+  padding:.5rem 0;transition:color .2s;
+}
+.back-link:hover{color:var(--teal)}
+.back-link svg{width:14px;height:14px}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  padding:3.5rem 2rem 2.5rem;
+  max-width:1200px;margin:0 auto;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--teal-dim);border:1px solid var(--teal);
+  color:var(--teal);font-size:.75rem;font-weight:600;letter-spacing:.06em;
+  padding:.35rem .9rem;border-radius:999px;margin-bottom:1.5rem;
+  text-transform:uppercase;
+}
+.hero-badge span{opacity:.6}|
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);
+  font-weight:400;line-height:1.15;margin-bottom:.75rem;
+  color:#fff;
+}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:680px;margin-bottom:2rem;line-height:1.7}
+.hero-stats{display:flex;gap:1.5rem;flex-wrap:wrap}
+.hero-stat{
+  display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:.85rem 1.25rem;min-width:140px;
+}
+.hero-stat-val{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:var(--teal)}
+.hero-stat-lbl{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+
+/* ── TOC ── */
+.toc-wrap{
+  position:relative;z-index:1;
+  max-width:1200px;margin:0 auto;padding:0 2rem 2rem;
+}
+.toc-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:.5rem;
+}
+.toc-item{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.65rem 1rem;border-radius:10px;
+  background:var(--card);border:1px solid var(--border);
+  text-decoration:none;color:var(--muted);font-size:.82rem;
+  transition:all .2s;
+}
+.toc-item:hover{border-color:var(--teal);color:var(--text);background:var(--teal-dim)}
+.toc-item-num{
+  font-family:var(--mono);font-size:.7rem;font-weight:600;
+  color:var(--teal);background:var(--teal-dim);
+  padding:.2rem .4rem;border-radius:5px;flex-shrink:0;
+}
+
+/* ── MAIN LAYOUT ── */
+.main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2rem 5rem}
+
+/* ── SECTION WRAPPER ── */
+.section{margin-bottom:3.5rem}
+.section-header{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.5rem;padding-bottom:1rem;
+  border-bottom:1px solid var(--border);
+}
+.section-icon{
+  width:40px;height:40px;border-radius:10px;
+  display:grid;place-items:center;font-size:1.2rem;flex-shrink:0;
+}
+.section-title{font-family:var(--serif);font-size:1.55rem;font-weight:400;color:#fff}
+.section-tag{
+  margin-left:auto;font-size:.7rem;font-weight:600;letter-spacing:.05em;
+  padding:.25rem .7rem;border-radius:999px;text-transform:uppercase;flex-shrink:0;
+}
+
+/* ── CONTENT CARDS ── */
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.5rem;margin-bottom:1rem;
+}
+.card-title{font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:.75rem}
+.card-lead{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:.75rem}
+
+/* ── DATA TABLE ── */
+.dtable{width:100%;border-collapse:collapse;font-size:.83rem}
+.dtable th{
+  background:var(--navy3);color:var(--teal);font-weight:600;
+  padding:.6rem .9rem;text-align:left;font-size:.75rem;
+  letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--border);
+}
+.dtable td{
+  padding:.6rem .9rem;border-bottom:1px solid var(--border);
+  color:var(--text);vertical-align:top;line-height:1.5;
+}
+.dtable tr:last-child td{border-bottom:none}
+.dtable tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.dtable tr:hover td{background:var(--teal-dim)}
+.dtable .key{color:var(--teal);font-family:var(--mono);font-size:.78rem;font-weight:600;white-space:nowrap}
+.dtable .val{color:#fff;font-weight:500}
+.dtable .note{color:var(--muted);font-size:.8rem}
+.dtable .tag{
+  display:inline-block;font-size:.68rem;font-weight:600;padding:.15rem .5rem;
+  border-radius:5px;letter-spacing:.03em;white-space:nowrap;
+}
+.tag-high{background:var(--rose-dim);color:var(--rose);border:1px solid rgba(251,113,133,.3)}
+.tag-mod{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(251,191,36,.3)}
+.tag-low{background:var(--green-dim);color:var(--green);border:1px solid rgba(74,222,128,.3)}
+.tag-info{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(96,165,250,.3)}
+.tag-teal{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.3)}
+.tag-violet{background:var(--violet-dim);color:var(--violet);border:1px solid rgba(167,139,250,.3)}
+.tag-req{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(251,146,60,.3)}
+
+/* ── TRIAL CARDS ── */
+.trial-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.trial-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:1.25rem;display:flex;flex-direction:column;gap:.75rem;
+  transition:border-color .2s;
+}
+.trial-card:hover{border-color:var(--teal)}
+.trial-card-head{display:flex;align-items:flex-start;gap:.75rem}
+.trial-badge{
+  font-family:var(--mono);font-size:.75rem;font-weight:600;
+  padding:.3rem .7rem;border-radius:7px;white-space:nowrap;flex-shrink:0;
+  background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.4);
+}
+.trial-name{font-weight:600;font-size:.95rem;color:#fff;line-height:1.3}
+.trial-sub{font-size:.8rem;color:var(--muted)}
+.trial-body{font-size:.82rem;color:var(--muted);line-height:1.6}
+.trial-result{
+  background:var(--navy3);border-radius:8px;padding:.7rem .9rem;
+  font-size:.8rem;line-height:1.5;
+}
+.trial-result strong{color:var(--teal);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem}
+.trial-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+
+/* ── CALLOUT ── */
+.callout{
+  border-radius:12px;padding:1rem 1.25rem;
+  display:flex;gap:.9rem;align-items:flex-start;margin:.75rem 0;
+}
+.callout-icon{font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+.callout-body{font-size:.85rem;line-height:1.6}
+.callout-body strong{display:block;font-weight:600;margin-bottom:.25rem}
+.callout.info{background:var(--blue-dim);border:1px solid rgba(96,165,250,.25);color:var(--blue)}
+.callout.warn{background:var(--amber-dim);border:1px solid rgba(251,191,36,.25);color:var(--amber)}
+.callout.danger{background:var(--rose-dim);border:1px solid rgba(251,113,133,.25);color:var(--rose)}
+.callout.success{background:var(--green-dim);border:1px solid rgba(74,222,128,.25);color:var(--green)}
+.callout.purple{background:var(--violet-dim);border:1px solid rgba(167,139,250,.25);color:var(--violet)}
+.callout.teal{background:var(--teal-dim);border:1px solid rgba(45,212,191,.25);color:var(--teal)}
+
+/* ── BULLET LIST ── */
+.blist{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.blist li{
+  display:flex;align-items:flex-start;gap:.6rem;
+  font-size:.87rem;color:var(--muted);line-height:1.5;
+}
+.blist li::before{content:'›';color:var(--teal);font-size:1rem;line-height:1.3;flex-shrink:0}
+.blist li strong{color:var(--text)}
+
+/* ── MCQ BLOCK ── */
+.mcq-list{display:flex;flex-direction:column;gap:1rem}
+.mcq{
+  border-radius:12px;padding:1.1rem 1.25rem;
+  border-left:3px solid var(--border);
+}
+.mcq.correct{background:var(--green-dim);border-left-color:var(--green)}
+.mcq.incorrect{background:var(--rose-dim);border-left-color:var(--rose)}
+.mcq.trap{background:var(--amber-dim);border-left-color:var(--amber)}
+.mcq-q{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.5rem;line-height:1.5}
+.mcq-a{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--mono);font-size:.78rem;font-weight:600;
+  padding:.25rem .6rem;border-radius:6px;margin-bottom:.5rem;
+}
+.mcq.correct .mcq-a{background:var(--green-dim);color:var(--green)}
+.mcq.incorrect .mcq-a{background:var(--rose-dim);color:var(--rose)}
+.mcq.trap .mcq-a{background:var(--amber-dim);color:var(--amber)}
+.mcq-exp{font-size:.81rem;color:var(--muted);line-height:1.6}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:720px){.two-col{grid-template-columns:1fr}}
+
+/* ── CHEAT SHEET ── */
+.cheat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem}
+.cheat-item{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;
+  transition:border-color .2s;
+}
+.cheat-item:hover{border-color:var(--teal)}
+.cheat-label{font-size:.8rem;color:var(--muted);line-height:1.4}
+.cheat-value{
+  font-family:var(--mono);font-size:.9rem;font-weight:600;color:var(--teal);
+  text-align:right;white-space:nowrap;flex-shrink:0;
+}
+
+/* ── TRAP TABLE ── */
+.trap-grid{display:flex;flex-direction:column;gap:.6rem}
+.trap-item{
+  display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:center;
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:.8rem 1rem;
+}
+.trap-stmt{font-size:.83rem;color:var(--text)}
+.trap-verdict{
+  font-family:var(--mono);font-size:.72rem;font-weight:700;
+  padding:.3rem .7rem;border-radius:6px;text-align:center;white-space:nowrap;
+}
+.verdict-false{background:var(--rose-dim);color:var(--rose);border:1px solid rgba(251,113,133,.3)}
+.verdict-true{background:var(--green-dim);color:var(--green);border:1px solid rgba(74,222,128,.3)}
+.verdict-partial{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(251,191,36,.3)}
+
+/* ── DRUG TABLE ── */
+.drug-grid{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.drug-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.1rem;display:flex;flex-direction:column;gap:.5rem;
+}
+.drug-name{font-weight:700;font-size:1rem;color:#fff}
+.drug-dose{font-family:var(--mono);font-size:.78rem;color:var(--teal)}
+.drug-for{font-size:.8rem;color:var(--muted)}
+.drug-tox{font-size:.78rem;color:var(--rose)}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{display:flex;flex-direction:column;gap:.75rem}
+.prog-item{display:flex;flex-direction:column;gap:.3rem}
+.prog-label{display:flex;justify-content:space-between;font-size:.8rem}
+.prog-label span:first-child{color:var(--text)}
+.prog-label span:last-child{font-family:var(--mono);color:var(--teal)}
+.prog-bar{height:6px;background:var(--navy3);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1s .3s}
+
+/* ── ACCORDION ── */
+details{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:.6rem;
+}
+summary{
+  padding:1rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  font-weight:600;font-size:.9rem;color:var(--text);list-style:none;
+  user-select:none;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'＋';color:var(--teal);font-size:.9rem;transition:transform .2s}
+details[open] summary::after{content:'－'}
+.details-body{padding:0 1.25rem 1.25rem;font-size:.85rem;color:var(--muted);line-height:1.7}
+
+/* ── SURVIVAL BOX ── */
+.surv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.surv-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.1rem;text-align:center;
+}
+.surv-pct{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--teal);display:block}
+.surv-label{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.surv-note{font-size:.72rem;color:var(--faint);margin-top:.3rem}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;
+  text-align:center;padding:2rem;
+  font-size:.78rem;color:var(--faint);
+  border-top:1px solid var(--border);
+}
+
+/* ── SCROLL SPY HIGHLIGHT ── */
+.section{opacity:1}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .hero{padding:2rem 1.25rem 1.5rem}
+  .main,.toc-wrap{padding-left:1.25rem;padding-right:1.25rem}
+  .topnav{padding:.6rem 1.25rem}
+  .topnav-links{display:none}
+  .trial-grid{grid-template-columns:1fr}
+}
+
+/* ANIMATE IN */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.section{animation:fadeUp .5s ease both}
+.section:nth-child(1){animation-delay:.05s}
+.section:nth-child(2){animation-delay:.10s}
+.section:nth-child(3){animation-delay:.15s}
+.section:nth-child(4){animation-delay:.20s}
+.section:nth-child(5){animation-delay:.25s}
+.section:nth-child(6){animation-delay:.30s}
+.section:nth-child(7){animation-delay:.35s}
+.section:nth-child(8){animation-delay:.40s}
+.section:nth-child(9){animation-delay:.45s}
+.section:nth-child(10){animation-delay:.50s}
+.section:nth-child(11){animation-delay:.55s}
+.section:nth-child(12){animation-delay:.60s}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="topnav">
+  <div class="topnav-brand">
+    <div class="topnav-logo">🏥</div>
+    <div>
+      <div class="topnav-name">KHCC Oncology</div>
+      <div class="topnav-sub">Year 1 Study Hub</div>
+    </div>
+  </div>
+  <div class="topnav-links">
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/index.html">All Topics</a>
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/breast/index.html" class="active">🎗️ Breast</a>
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/colorectal/index.html">🩺 Colorectal</a>
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/thyroid/index.html">🔬 Thyroid</a>
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/hbp/index.html">🫀 HBP</a>
+    <a href="https://tuqaghazawi.github.io/surgicaloncolgy/ugi/index.html">🫁 Upper GI</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <a class="back-link" href="https://tuqaghazawi.github.io/surgicaloncolgy/breast/index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+    Back to Breast Cancer
+  </a>
+
+  <div style="height:1rem"></div>
+  <div class="hero-badge">🎗️ Breast · Non-Invasive <span>|</span> Subset</div>
+  <h1>Non-Invasive<br/><em>Breast Cancer</em></h1>
+  <p class="hero-lead">DCIS, LCIS, ADH, ALH — pathology, staging, surgical principles, radiation trials, active surveillance, endocrine therapy, and MCQ-ready fact sheets. Based on MD Anderson Manual 7th Ed., NCCN 2026, and Springer MCQs.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-val">~48,100</span><span class="hero-stat-lbl">DCIS cases/yr (US)</span></div>
+    <div class="hero-stat"><span class="hero-stat-val">20–25%</span><span class="hero-stat-lbl">of new breast Dx</span></div>
+    <div class="hero-stat"><span class="hero-stat-val">5 RCTs</span><span class="hero-stat-lbl">radiation evidence base</span></div>
+    <div class="hero-stat"><span class="hero-stat-val">≥2 mm</span><span class="hero-stat-lbl">adequate BCS margin</span></div>
+  </div>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="toc-wrap">
+  <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;font-weight:600;">Jump to Section</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#s1"><span class="toc-item-num">01</span>Epidemiology & Pathology</a>
+    <a class="toc-item" href="#s2"><span class="toc-item-num">02</span>Diagnosis & Imaging</a>
+    <a class="toc-item" href="#s3"><span class="toc-item-num">03</span>Surgical Treatment</a>
+    <a class="toc-item" href="#s4"><span class="toc-item-num">04</span>Radiation Therapy — 5 RCTs</a>
+    <a class="toc-item" href="#s5"><span class="toc-item-num">05</span>Active Surveillance Trials</a>
+    <a class="toc-item" href="#s6"><span class="toc-item-num">06</span>Endocrine Therapy</a>
+    <a class="toc-item" href="#s7"><span class="toc-item-num">07</span>Sentinel Lymph Node</a>
+    <a class="toc-item" href="#s8"><span class="toc-item-num">08</span>Premalignant Lesions</a>
+    <a class="toc-item" href="#s9"><span class="toc-item-num">09</span>Predictors & Molecular Tools</a>
+    <a class="toc-item" href="#s10"><span class="toc-item-num">10</span>Surveillance</a>
+    <a class="toc-item" href="#s11"><span class="toc-item-num">11</span>MCQ Practice Bank</a>
+    <a class="toc-item" href="#s12"><span class="toc-item-num">12</span>Last-Night Cheat Sheet</a>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 1 — EPIDEMIOLOGY & PATHOLOGY
+──────────────────────────────────────────────────── -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--teal-dim);border:1px solid var(--teal)">🧬</div>
+    <h2 class="section-title">Epidemiology & Pathology</h2>
+    <span class="section-tag" style="background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.3)">Section 01</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-title">Key Epidemiological Numbers</div>
+        <table class="dtable">
+          <tr><td class="key">Lifetime BC risk</td><td class="val">1 in 8 (~12.5%)</td></tr>
+          <tr><td class="key">DCIS of new Dx</td><td class="val">20–25%</td></tr>
+          <tr><td class="key">Screen-detected today</td><td class="val">80–85%</td></tr>
+          <tr><td class="key">Mammography detection rate</td><td class="val">17–34% of mammo-detected cancers</td></tr>
+          <tr><td class="key">Median age at DCIS Dx</td><td class="val">47–63 years</td></tr>
+          <tr><td class="key">Peak DCIS incidence</td><td class="val">65–69 yrs (96.7/100,000)</td></tr>
+          <tr><td class="key">Peak invasive BC incidence</td><td class="val">75–79 yrs (453.1/100,000)</td></tr>
+          <tr><td class="key">DCIS in autopsy series</td><td class="val">Higher than clinical → possible overdetection</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title">Risk Factors — Identical to Invasive BC</div>
+        <ul class="blist">
+          <li>Older age, proliferative breast disease, increased breast density</li>
+          <li>Nulliparity, older age at first birth, early menarche, late menopause</li>
+          <li>Long-term postmenopausal HRT, elevated BMI (postmenopausal)</li>
+          <li>BRCA1/2 mutations — rates <strong>similar to invasive BC</strong></li>
+          <li>First-degree family history 10–35%</li>
+        </ul>
+        <div class="callout teal" style="margin-top:.75rem">
+          <span class="callout-icon">📌</span>
+          <div class="callout-body"><strong>DCIS is classified as Tis, Stage 0.</strong> DCIS with microinvasion (≤1 mm foci) = T1mi → upstaged to Stage I.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:0">
+    <div class="card-title">Growth Patterns & Nuclear Grading</div>
+    <div class="two-col">
+      <div>
+        <table class="dtable">
+          <thead><tr><th>Pattern</th><th>Key Feature</th></tr></thead>
+          <tr><td class="val">Cribriform</td><td>Swiss-cheese sieves; most common</td></tr>
+          <tr><td class="val">Solid</td><td>Complete ductal occlusion</td></tr>
+          <tr><td class="val">Micropapillary</td><td>Worst mammographic concordance (44% underestimate >2 cm)</td></tr>
+          <tr><td class="val">Papillary</td><td>True papillae with fibrovascular cores</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="dtable">
+          <thead><tr><th>Grade</th><th>Features</th></tr></thead>
+          <tr><td><span class="tag tag-low">Low</span></td><td>Monotonous cells, uniform nuclei; necrosis rare</td></tr>
+          <tr><td><span class="tag tag-mod">Intermediate</span></td><td>Between low & high; necrosis may be present</td></tr>
+          <tr><td><span class="tag tag-high">High</span></td><td>Pleomorphic, frequent mitoses, comedonecrosis</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Microinvasion — Key Numbers</div>
+    <div class="two-col">
+      <table class="dtable">
+        <tr><td class="key">Axillary metastasis rate</td><td class="val">0–20%</td></tr>
+        <tr><td class="key">Microinvasion with DCIS &lt;25 mm</td><td class="val">2% (Lagios)</td></tr>
+        <tr><td class="key">Microinvasion with DCIS &gt;26 mm</td><td class="val">29% (Lagios)</td></tr>
+        <tr><td class="key">10-yr distant mets-free (DCIS only)</td><td class="val">98%</td></tr>
+        <tr><td class="key">10-yr distant mets-free (DCIS + MI)</td><td class="val">91%</td></tr>
+      </table>
+      <div>
+        <div class="callout warn">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body"><strong>Higher risk of microinvasion with:</strong> High-grade / comedo DCIS, palpable mass, nipple discharge, large lesion size.</div>
+        </div>
+        <div class="callout info" style="margin-top:.5rem">
+          <span class="callout-icon">ℹ️</span>
+          <div class="callout-body"><strong>CAP pathology report must include:</strong> Histologic pattern, nuclear grade, necrosis, margin distance, size, calcifications, ER/PR status.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 2 — DIAGNOSIS & IMAGING
+──────────────────────────────────────────────────── -->
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--blue-dim);border:1px solid var(--blue)">🔭</div>
+    <h2 class="section-title">Diagnosis & Imaging</h2>
+    <span class="section-tag" style="background:var(--blue-dim);color:var(--blue);border:1px solid rgba(96,165,250,.3)">Section 02</span>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>MCQ PEARL:</strong> ~90% of DCIS presents as microcalcifications on mammography — NOT as a palpable mass or bloody nipple discharge. Before screening era: palpable mass was the main presentation.</div>
+  </div>
+
+  <div class="two-col" style="margin-top:1rem">
+    <div class="card">
+      <div class="card-title">Mammographic Features</div>
+      <ul class="blist">
+        <li>Microcalcifications: <strong>80–90%</strong> of mammographic DCIS presentations</li>
+        <li><strong>Linear branching</strong> calcifications → high-grade comedo DCIS</li>
+        <li><strong>Fine granular</strong> calcifications → lower-grade micropapillary/cribriform</li>
+        <li>Mammography underestimates extent in <strong>44%</strong> of micropapillary DCIS (vs. 12% comedo)</li>
+        <li>Magnification views reduce underestimation to <strong>14%</strong> — use routinely</li>
+        <li>Bilateral diagnostic mammography required — 0.5–3% have contralateral synchronous disease</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">MRI — Role & Evidence</div>
+      <ul class="blist">
+        <li>Sensitivity up to <strong>98%</strong> for high-grade DCIS (NCCN 2026)</li>
+        <li>MRI detected multicentric disease in <strong>4.3%</strong> of DCIS (Hollingsworth)</li>
+        <li>Contralateral DCIS: sensitivity <strong>71%</strong>, specificity <strong>90%</strong> (Lehman)</li>
+        <li>MSK study (2,300 pts): <strong>NO reduction</strong> in locoregional recurrence with preop MRI</li>
+        <li>NCCN: MRI should <strong>NOT</strong> solely drive mastectomy decision</li>
+        <li>HER2 status in DCIS does <strong>NOT</strong> alter management (NCCN 2026)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Diagnostic Biopsy — Core Needle is Standard</div>
+    <table class="dtable">
+      <thead><tr><th>Core Biopsy Finding</th><th>Upgrade Rate on Excision</th><th>Action</th></tr></thead>
+      <tr><td class="val">DCIS on core biopsy</td><td>20% invasive on excision</td><td>Proceed to definitive surgery</td></tr>
+      <tr><td class="val">ADH</td><td>25–30% DCIS/invasive</td><td>Excisional biopsy (usually)</td></tr>
+      <tr><td class="val">Radial scar</td><td>Up to 20%</td><td>Consider excision</td></tr>
+      <tr><td class="val">Flat epithelial atypia (FEA)</td><td>5–10%</td><td>Excision if calcs not all removed; observe if fully sampled</td></tr>
+    </table>
+    <div class="callout danger" style="margin-top:.75rem">
+      <span class="callout-icon">🚫</span>
+      <div class="callout-body"><strong>Fine-needle aspiration CANNOT</strong> distinguish DCIS from invasive disease. Core needle biopsy is the diagnostic standard. Excisional biopsy reserved for inconclusive/discordant results.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 3 — SURGICAL TREATMENT
+──────────────────────────────────────────────────── -->
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--orange-dim);border:1px solid var(--orange)">🔪</div>
+    <h2 class="section-title">Surgical Treatment</h2>
+    <span class="section-tag" style="background:var(--orange-dim);color:var(--orange);border:1px solid rgba(251,146,60,.3)">Section 03</span>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-icon">🏆</span>
+    <div class="callout-body"><strong>Key Principle:</strong> No survival advantage has ever been demonstrated for mastectomy over BCS + radiation in DCIS. Mastectomy LRR ≈ 2.6% vs. BCS + RT ≈ 13.6% at 10 years (Stuart 2015 meta-analysis, 9,404 patients). Disease-specific survival is equivalent.</div>
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">Margin Guidelines — SSO / ASTRO / ASCO Joint Consensus 2016</div>
+    <p class="card-lead">Meta-analysis of 20 studies, 7,883 patients, 865 IBTRs, median follow-up 78.3 months.</p>
+    <table class="dtable">
+      <thead><tr><th>Margin Width</th><th>Status</th><th>Recommendation</th></tr></thead>
+      <tr><td class="val">≥ 2 mm</td><td><span class="tag tag-low">ADEQUATE</span></td><td>Standard for BCS + WBI; 2× lower IBTR vs. positive margins</td></tr>
+      <tr><td class="val">&lt; 1 mm</td><td><span class="tag tag-high">INADEQUATE</span></td><td>Re-excision required</td></tr>
+      <tr><td class="val">1–2 mm</td><td><span class="tag tag-mod">JUDGMENT</span></td><td>Clinical judgment — consider grade, age, RT planned</td></tr>
+      <tr><td class="val">Positive margin</td><td><span class="tag tag-high">CONCERN</span></td><td>2× increased IBTR risk vs. negative margins</td></tr>
+      <tr><td class="val">Chest wall / skin boundary</td><td><span class="tag tag-info">EXCEPTION</span></td><td>RT boost to scar = acceptable alternative to re-excision</td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">BCS — Candidate Criteria</div>
+      <ul class="blist">
+        <li>Unicentric disease</li>
+        <li>Tumor-to-breast size ratio allows acceptable cosmesis</li>
+        <li>No evidence of diffuse microcalcifications on mammography</li>
+        <li>No contraindications to radiotherapy</li>
+        <li>Margins can be achieved at ≥ 2 mm</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Mastectomy Indications</div>
+      <ul class="blist">
+        <li>Diffuse malignant-appearing calcifications throughout breast</li>
+        <li>Persistent positive margins after re-excision</li>
+        <li>Contraindication to RT (e.g., <strong>scleroderma</strong>, pregnancy, prior RT)</li>
+        <li>Large lesion (&gt;4 cm) with unfavorable breast-to-tumor ratio</li>
+        <li>Multicentric disease impairing cosmesis</li>
+        <li>Patient preference (counsel: no survival benefit)</li>
+        <li>DCIS recurrence after prior BCS + RT</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-icon">⚠️</span>
+    <div class="callout-body"><strong>Scleroderma MCQ Trap:</strong> Scleroderma = relative contraindication to radiation → skin-sparing mastectomy + SLN dissection at same operation. Cannot map lymphatics later after mastectomy if invasive disease found on final pathology.</div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 4 — RADIATION THERAPY
+──────────────────────────────────────────────────── -->
+<div class="section" id="s4">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--rose-dim);border:1px solid var(--rose)">☢️</div>
+    <h2 class="section-title">Radiation Therapy — Five Landmark RCTs</h2>
+    <span class="section-tag" style="background:var(--rose-dim);color:var(--rose);border:1px solid rgba(251,113,133,.3)">Section 04</span>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-icon">📊</span>
+    <div class="callout-body"><strong>Universal finding across all 5 trials:</strong> RT reduces IBTR (both invasive AND noninvasive) by ~50% relative reduction. NONE demonstrate an overall survival benefit. RT reduces recurrence regardless of age, grade, necrosis, or margin status.</div>
+  </div>
+
+  <div class="trial-grid" style="margin-top:1rem">
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge">NSABP B-17</span>
+        <div>
+          <div class="trial-name">NSABP B-17</div>
+          <div class="trial-sub">818 women · BCS ± RT · 1985–1990</div>
+        </div>
+      </div>
+      <div class="trial-body">818 women with localized DCIS randomized after margin-negative resection to BCS or BCS + RT.</div>
+      <div class="trial-result">
+        <strong>15-Year Results</strong>
+        Noninvasive IBTR: 15.7% → 8.8% (HR 0.53, CI 0.35–0.80)<br/>
+        Invasive IBTR: 19.4% → 8.9% (HR 0.48, CI 0.33–0.69)<br/>
+        Overall survival: <em>No difference</em>
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-high">~50% reduction</span>
+        <span class="tag tag-info">No OS benefit</span>
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge">EORTC 10853</span>
+        <div>
+          <div class="trial-name">EORTC 10853</div>
+          <div class="trial-sub">1,010 women · 1986–1996</div>
+        </div>
+      </div>
+      <div class="trial-body">1,010 women randomized to BCS ± RT. Confirmed B-17 findings at longer follow-up.</div>
+      <div class="trial-result">
+        <strong>15-Year Results</strong>
+        Noninvasive recurrence: 16% → 8% (HR 0.49, CI 0.33–0.73)<br/>
+        Invasive recurrence: 16% → 10% (HR 0.61, CI 0.42–0.87)<br/>
+        Overall survival: <em>No difference</em>
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-high">Confirms B-17</span>
+        <span class="tag tag-info">No OS benefit</span>
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge">UK/ANZ DCIS</span>
+        <div>
+          <div class="trial-name">UK / ANZ DCIS Trial</div>
+          <div class="trial-sub">1,701 women · 3 arms · 1990–1998</div>
+        </div>
+      </div>
+      <div class="trial-body">3 arms: no adjuvant, RT or tamoxifen, or RT + tamoxifen. Enrolled from UK, Australia, New Zealand.</div>
+      <div class="trial-result">
+        <strong>12.7-Year Follow-up</strong>
+        Ipsilateral DCIS: HR 0.38 (CI 0.22–0.63)<br/>
+        Ipsilateral invasive: HR 0.32 (CI 0.19–0.56)<br/>
+        Tamoxifen reduced all new events: HR 0.71
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-high">Durable RT benefit</span>
+        <span class="tag tag-teal">Tamoxifen additive</span>
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge">RTOG 9804</span>
+        <div>
+          <div class="trial-name">RTOG 9804</div>
+          <div class="trial-sub">636 pts · Low/intermediate grade · ≤25 mm · margins ≥3 mm</div>
+        </div>
+      </div>
+      <div class="trial-body">Randomized "good-risk" DCIS to RT vs. observation ± tamoxifen. Closed early (636 of 1,790 planned).</div>
+      <div class="trial-result">
+        <strong>15-Year Results</strong>
+        IBTR: 7.1% (RT) vs. 15.1% (obs), p &lt; 0.001<br/>
+        Invasive local recurrence: 5.6% vs. 9.5%, p = 0.03
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-mod">Even low-grade benefits from RT</span>
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge">SweDCIS</span>
+        <div>
+          <div class="trial-name">SweDCIS Trial</div>
+          <div class="trial-sub">1,046 women · 1987–1999</div>
+        </div>
+      </div>
+      <div class="trial-body">Swedish trial randomizing women after lumpectomy to RT vs. observation.</div>
+      <div class="trial-result">
+        <strong>20-Year Follow-up</strong>
+        Local recurrence reduction: 37.5%<br/>
+        Breast cancer-specific survival: <em>No difference</em><br/>
+        Overall survival: <em>No difference</em>
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-high">Longest follow-up</span>
+        <span class="tag tag-info">No OS benefit</span>
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--violet-dim);color:var(--violet);border-color:rgba(167,139,250,.4)">NSABP B-39</span>
+        <div>
+          <div class="trial-name">NSABP B-39 / RTOG 0413 — APBI</div>
+          <div class="trial-sub">4,216 pts · APBI vs. WBI · 2005–2013</div>
+        </div>
+      </div>
+      <div class="trial-body">APBI vs. WBI in DCIS (518 vs. 513 pts) and early invasive BC. APBI = 4–5 days vs. 4–6 weeks WBI.</div>
+      <div class="trial-result">
+        <strong>Primary Endpoint</strong>
+        IBTR: 4% (APBI) vs. 3% (WBI) — HR 1.22 (90% CI 0.94–1.58)<br/>
+        DCIS subgroup: 6.2% vs. 5.8% (HR 1.01, NS)<br/>
+        APBI did <strong>NOT</strong> meet equivalence to WBI
+      </div>
+      <div class="trial-tags">
+        <span class="tag tag-high">APBI not equivalent</span>
+        <span class="tag tag-info">No OS difference</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">Omitting RT — When Acceptable (MD Anderson Criteria)</div>
+    <table class="dtable">
+      <thead><tr><th>Criterion</th><th>Requirement</th></tr></thead>
+      <tr><td class="key">Lesion size</td><td>&lt; 1 cm</td></tr>
+      <tr><td class="key">Nuclear grade</td><td>Low grade only</td></tr>
+      <tr><td class="key">Margins</td><td>≥ 5–10 mm</td></tr>
+      <tr><td class="key">Patient profile</td><td>Advanced age, life expectancy &lt; 15 years</td></tr>
+      <tr><td class="key">Follow-up</td><td>Diligent surveillance possible</td></tr>
+    </table>
+    <div class="callout danger" style="margin-top:.75rem">
+      <span class="callout-icon">🚫</span>
+      <div class="callout-body"><strong>NSABP B-17 reanalysis:</strong> ALL patient subgroups benefited from RT regardless of clinical or mammographic characteristics. Wong (Harvard): 13% local recurrence at 11 years even in favorable DCIS without RT. RT omission remains controversial even in "good-risk" DCIS.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 5 — ACTIVE SURVEILLANCE TRIALS
+──────────────────────────────────────────────────── -->
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--violet-dim);border:1px solid var(--violet)">🔬</div>
+    <h2 class="section-title">Active Surveillance Trials</h2>
+    <span class="section-tag" style="background:var(--violet-dim);color:var(--violet);border:1px solid rgba(167,139,250,.3)">Section 05</span>
+  </div>
+
+  <div class="callout purple">
+    <span class="callout-icon">📡</span>
+    <div class="callout-body"><strong>Context:</strong> Much of the DCIS incidence rise is likely overdetection of biologically indolent lesions. SEER data (Ryser et al.): 10-yr invasive risk without any treatment = 12.2% (low grade) to 17.6% (high grade). Three trials are investigating whether surgery can be safely omitted in low-risk DCIS.</div>
+  </div>
+
+  <div class="trial-grid" style="margin-top:1rem">
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--violet-dim);color:var(--violet);border-color:rgba(167,139,250,.4)">COMET</span>
+        <div>
+          <div class="trial-name">COMET Trial</div>
+          <div class="trial-sub">USA · RCT · Federal funding 2016</div>
+        </div>
+      </div>
+      <div class="trial-body">Comparing an Operation to Monitoring, With or Without Endocrine Therapy. Standard care (surgery ± RT) vs. active surveillance. Both arms may choose endocrine therapy.</div>
+      <div class="trial-result">
+        <strong>Inclusion Criteria (HIGH-YIELD)</strong>
+        Age ≥ 40 · Grade 1 or 2 (comedonecrosis OK) · ER+ and/or PR+ · No invasion/microinvasion · Uni/bilateral, unifocal/multifocal/multicentric
+      </div>
+      <div class="trial-result" style="margin-top:.5rem">
+        <strong>Primary Endpoint</strong>
+        Ipsilateral invasive breast cancer rate
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--violet-dim);color:var(--violet);border-color:rgba(167,139,250,.4)">LORD</span>
+        <div>
+          <div class="trial-name">LORD Trial</div>
+          <div class="trial-sub">Europe (EORTC) · Noninferiority · Jan 2017</div>
+        </div>
+      </div>
+      <div class="trial-body">LOw Risk DCIS — multicenter international noninferiority trial. Active surveillance (annual mammogram only, no locoregional/endocrine therapy) vs. standard surgical treatment ± endocrine.</div>
+      <div class="trial-result">
+        <strong>Inclusion</strong>
+        Low-grade DCIS only
+      </div>
+      <div class="trial-result" style="margin-top:.5rem">
+        <strong>Primary Endpoint</strong>
+        Ipsilateral invasive BC at 10 years
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--violet-dim);color:var(--violet);border-color:rgba(167,139,250,.4)">LORIS</span>
+        <div>
+          <div class="trial-name">LORIS Trial</div>
+          <div class="trial-sub">UK · Phase III · Accrual complete March 2020</div>
+        </div>
+      </div>
+      <div class="trial-body">Low Risk DCIS — UK phase III comparing active surveillance vs. surgery for low/intermediate grade DCIS. Accrual completed March 2020; <strong>results still pending</strong>.</div>
+      <div class="trial-result">
+        <strong>Inclusion</strong>
+        Low/intermediate grade · No high-grade features
+      </div>
+      <div class="trial-result" style="margin-top:.5rem">
+        <strong>Primary Endpoint</strong>
+        Invasive ipsilateral event-free survival
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--violet-dim);color:var(--violet);border-color:rgba(167,139,250,.4)">LORETTA</span>
+        <div>
+          <div class="trial-name">LORETTA Trial</div>
+          <div class="trial-sub">Japan · Phase II · Ongoing</div>
+        </div>
+      </div>
+      <div class="trial-body">Active surveillance + aromatase inhibitor for low/intermediate grade ER+ DCIS in postmenopausal women.</div>
+      <div class="trial-result">
+        <strong>Inclusion</strong>
+        Low/intermediate grade · ER+ · Postmenopausal
+      </div>
+      <div class="trial-result" style="margin-top:.5rem">
+        <strong>Primary Endpoint</strong>
+        2-year invasive BC rate
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">COMET Inclusion Criteria — Memorize for MCQs</div>
+    <table class="dtable">
+      <thead><tr><th>Criterion</th><th>Requirement</th><th>Note</th></tr></thead>
+      <tr><td class="key">Age</td><td class="val">≥ 40 years</td><td></td></tr>
+      <tr><td class="key">DCIS Grade</td><td class="val">Grade 1 or 2</td><td>Comedonecrosis is allowed</td></tr>
+      <tr><td class="key">Hormone Receptors</td><td class="val">ER+ and/or PR+</td><td>Required</td></tr>
+      <tr><td class="key">Invasion</td><td class="val">Absent</td><td>No microinvasion</td></tr>
+      <tr><td class="key">Distribution</td><td class="val">Any</td><td>Uni/bilateral, unifocal/multifocal/multicentric OK</td></tr>
+      <tr><td class="key">Prior DCIS treatment</td><td class="val">Not eligible</td><td>If prior BCS + RT for ipsilateral DCIS</td></tr>
+      <tr><td class="key">Invasive cancer</td><td class="val">Not eligible</td><td>DCIS only — no invasion</td></tr>
+    </table>
+    <div class="callout warn" style="margin-top:.75rem">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body"><strong>Active surveillance schedule:</strong> Mammogram ± MRI every 6–12 months · Clinical breast exam every 6 months · No locoregional therapy in surveillance arm · Endocrine therapy optional in both COMET arms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 6 — ENDOCRINE THERAPY
+──────────────────────────────────────────────────── -->
+<div class="section" id="s6">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--green-dim);border:1px solid var(--green)">💊</div>
+    <h2 class="section-title">Endocrine Therapy</h2>
+    <span class="section-tag" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(74,222,128,.3)">Section 06</span>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>Key Rule:</strong> Endocrine therapy should ONLY be used in ER+ DCIS. No benefit demonstrated in ER− disease (NSABP B-24 subgroup analysis).</div>
+  </div>
+
+  <div class="trial-grid" style="margin-top:1rem">
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--green-dim);color:var(--green);border-color:rgba(74,222,128,.4)">B-24</span>
+        <div>
+          <div class="trial-name">NSABP B-24</div>
+          <div class="trial-sub">1,804 women · BCS + RT · Tamoxifen vs. placebo × 5 yrs</div>
+        </div>
+      </div>
+      <div class="trial-body">16% had positive resection margins. Tamoxifen 20 mg/day vs. placebo for 5 years after BCS + RT.</div>
+      <div class="trial-result">
+        <strong>7-Year Results</strong>
+        Breast events: 10.0% (tam) vs. 16.9% (placebo)<br/>
+        Ipsilateral invasive: 2.6% vs. 5.3%<br/>
+        Contralateral neoplasms: 2.3% vs. 4.9%<br/>
+        OS: No difference (95% both groups)<br/>
+        ER+ subgroup: &gt;50% RR reduction at 10 yrs
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--green-dim);color:var(--green);border-color:rgba(74,222,128,.4)">B-35</span>
+        <div>
+          <div class="trial-name">NSABP B-35</div>
+          <div class="trial-sub">3,000+ postmenopausal · Anastrozole vs. tamoxifen × 5 yrs</div>
+        </div>
+      </div>
+      <div class="trial-body">Postmenopausal DCIS patients after BCS + RT, 333 US/Canadian centers, 2003–2006.</div>
+      <div class="trial-result">
+        <strong>9-Year Follow-up</strong>
+        Anastrozole superior: HR 0.73 (CI 0.56–0.96)<br/>
+        Benefit only in women &lt; 60 years<br/>
+        Venous thromboembolic events higher with tamoxifen
+      </div>
+    </div>
+
+    <div class="trial-card">
+      <div class="trial-card-head">
+        <span class="trial-badge" style="background:var(--green-dim);color:var(--green);border-color:rgba(74,222,128,.4)">IBIS-II</span>
+        <div>
+          <div class="trial-name">IBIS-II</div>
+          <div class="trial-sub">Postmenopausal · Anastrozole 1 mg vs. placebo × 5 yrs · 18 countries</div>
+        </div>
+      </div>
+      <div class="trial-body">Women aged 40–70 from 18 countries, 2003–2012. Anastrozole vs. placebo for 5 years.</div>
+      <div class="trial-result">
+        <strong>5-Year Results</strong>
+        Breast cancer: 2% (anastrozole) vs. 4% (placebo)<br/>
+        HR 0.47 (CI 0.32–0.68) — &gt;50% risk reduction
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">Drug Selection by Patient Profile</div>
+    <table class="dtable">
+      <thead><tr><th>Menopausal Status</th><th>Preferred Agent</th><th>Key Toxicities / Rationale</th></tr></thead>
+      <tr>
+        <td class="val">Premenopausal · ER+</td>
+        <td><span class="tag tag-teal">Tamoxifen 20 mg × 5 yrs</span></td>
+        <td class="note">DVT/PE, endometrial cancer (2–7×), stroke, cataracts; do NOT use AIs</td>
+      </tr>
+      <tr>
+        <td class="val">Postmenopausal · intact uterus · osteopenia</td>
+        <td><span class="tag tag-low">Raloxifene 60 mg × 5 yrs</span></td>
+        <td class="note">Equivalent to tamoxifen (NSABP P-2); fewer endometrial/thromboembolic events; helps bone density</td>
+      </tr>
+      <tr>
+        <td class="val">Postmenopausal · no uterine concern</td>
+        <td><span class="tag tag-teal">Anastrozole 1 mg or Exemestane 25 mg × 5 yrs</span></td>
+        <td class="note">Osteoporosis, arthralgias; fewer CV events vs. tamoxifen</td>
+      </tr>
+      <tr>
+        <td class="val">ER− DCIS · any</td>
+        <td><span class="tag tag-high">NO endocrine therapy</span></td>
+        <td class="note">No benefit demonstrated</td>
+      </tr>
+    </table>
+    <div class="callout info" style="margin-top:.75rem">
+      <span class="callout-icon">ℹ️</span>
+      <div class="callout-body"><strong>ASCO Risk Reduction Threshold:</strong> Pharmacologic risk reduction recommended for 5-year absolute risk ≥ 1.7%. ALL patients with ADH, ALH, or LCIS automatically meet this criterion.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 7 — SENTINEL LYMPH NODE
+──────────────────────────────────────────────────── -->
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--amber-dim);border:1px solid var(--amber)">🔍</div>
+    <h2 class="section-title">Sentinel Lymph Node Biopsy in DCIS</h2>
+    <span class="section-tag" style="background:var(--amber-dim);color:var(--amber);border:1px solid rgba(251,191,36,.3)">Section 07</span>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-icon">📌</span>
+    <div class="callout-body"><strong>MCQ Rule:</strong> SLNB is NOT routinely recommended for DCIS undergoing BCS. It IS indicated when mastectomy is planned, because lymphatic mapping becomes impossible after mastectomy if invasive disease is found on final pathology.</div>
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">SLN Indications in DCIS</div>
+    <table class="dtable">
+      <thead><tr><th>Scenario</th><th>Rationale</th><th>Recommendation</th></tr></thead>
+      <tr><td class="val">Mastectomy for DCIS (any size)</td><td>Cannot map after mastectomy if invasion found</td><td><span class="tag tag-req">REQUIRED</span></td></tr>
+      <tr><td class="val">High-grade DCIS</td><td>Higher occult invasion risk</td><td><span class="tag tag-teal">RECOMMENDED</span></td></tr>
+      <tr><td class="val">Palpable DCIS / &gt;4 cm</td><td>High risk of coexistent invasion</td><td><span class="tag tag-teal">RECOMMENDED</span></td></tr>
+      <tr><td class="val">Microinvasion on biopsy</td><td>Already T1mi — axillary staging needed</td><td><span class="tag tag-req">REQUIRED</span></td></tr>
+      <tr><td class="val">Comedo-type necrosis</td><td>Marker of aggressive biology</td><td><span class="tag tag-mod">CONSIDER</span></td></tr>
+      <tr><td class="val">BCS with oncoplastic rearrangement</td><td>Lymphatic disruption may preclude later mapping</td><td><span class="tag tag-mod">CONSIDER</span></td></tr>
+      <tr><td class="val">Routine BCS without high-risk features</td><td>Axillary involvement rate only 1–2%</td><td><span class="tag tag-high">NOT ROUTINE</span></td></tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="callout info">
+      <span class="callout-icon">📊</span>
+      <div class="callout-body"><strong>MD Anderson Data (Francis et al., 1,234 pts):</strong> Positive SLN in 10.7%. Upstaging in 26.5%. At 61.7-month FU: NO difference in disease-free survival between DCIS with vs. without positive SLN. High isolated tumor cells likely = benign mechanical transport.</div>
+    </div>
+    <div class="callout success">
+      <span class="callout-icon">✅</span>
+      <div class="callout-body"><strong>Delayed SLN after BCS:</strong> Possible as a second procedure if invasive disease found on final pathology — lymphatic channels are preserved after lumpectomy. NOT possible after mastectomy.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 8 — PREMALIGNANT LESIONS
+──────────────────────────────────────────────────── -->
+<div class="section" id="s8">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--teal-dim);border:1px solid var(--teal)">🧪</div>
+    <h2 class="section-title">Premalignant & High-Risk Lesions</h2>
+    <span class="section-tag" style="background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.3)">Section 08</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Summary Comparison Table</div>
+    <table class="dtable">
+      <thead><tr><th>Lesion</th><th>Relative Risk</th><th>Presentation</th><th>Management</th><th>Bilateral Risk?</th></tr></thead>
+      <tr>
+        <td class="val">ALH</td>
+        <td><span class="tag tag-mod">4–5×</span></td>
+        <td>Incidental finding</td>
+        <td>Observation ± endocrine Rx</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td class="val">ADH</td>
+        <td><span class="tag tag-mod">4–5×</span></td>
+        <td>Incidental / screen calcs</td>
+        <td>Excisional biopsy (25–30% upgrade); endocrine Rx</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td class="val">LCIS (classic)</td>
+        <td><span class="tag tag-high">7–12×</span></td>
+        <td>Incidental finding</td>
+        <td>Surveillance ± endocrine Rx</td>
+        <td>Yes (equal both breasts)</td>
+      </tr>
+      <tr>
+        <td class="val">Pleomorphic LCIS</td>
+        <td><span class="tag tag-high">Higher</span></td>
+        <td>May have calcifications</td>
+        <td>Surgical excision + negative margins (treat like DCIS)</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td class="val">DCIS</td>
+        <td><span class="tag tag-high">Nonobligate precursor</span></td>
+        <td>Calcs on mammo (80–90%)</td>
+        <td>BCS + RT or mastectomy + endocrine Rx if ER+</td>
+        <td>0.5–3% synchronous</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-title">LCIS — Key Facts</div>
+        <ul class="blist">
+          <li><strong>NOT a premalignant lesion</strong> — it is a bilateral risk MARKER</li>
+          <li>Risk: ~1%/year; ~20–30% at 15 years</li>
+          <li>Mean age: 44–46 yrs (10–15 yrs younger than invasive BC)</li>
+          <li>Often bilateral, multicentric, multifocal (contralateral in 30–90%)</li>
+          <li><strong>E-cadherin: NEGATIVE</strong> in LCIS (positive in DCIS) — key differentiator</li>
+          <li>Time to invasive cancer: <strong>10–15 years</strong> (not 5 — MCQ trap!)</li>
+          <li>Most common presentation: <strong>incidental finding</strong> on biopsy for another lesion</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title">ADH — Key Facts</div>
+        <ul class="blist">
+          <li>Lies between usual ductal hyperplasia and low-grade DCIS</li>
+          <li>Defined: &lt; 2 terminal ductal-lobular units, area &lt; 2 mm</li>
+          <li>4–5× increased lifetime risk of breast cancer</li>
+          <li><strong>25–30% upgrade</strong> to DCIS/invasive on surgical excision</li>
+          <li>25-year cumulative incidence of BC: <strong>30%</strong></li>
+          <li>Strongly ER+ and PR+, rarely HER2/neu-amplified</li>
+        </ul>
+        <div class="callout warn" style="margin-top:.75rem">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body"><strong>ADH upgrade risk factors:</strong> ≥3 TDLUs involved + significant atypia + necrosis + &lt;95% calcifications removed → excisional biopsy indicated.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 9 — PREDICTORS & MOLECULAR TOOLS
+──────────────────────────────────────────────────── -->
+<div class="section" id="s9">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--blue-dim);border:1px solid var(--blue)">📊</div>
+    <h2 class="section-title">Predictors of Recurrence & Molecular Tools</h2>
+    <span class="section-tag" style="background:var(--blue-dim);color:var(--blue);border:1px solid rgba(96,165,250,.3)">Section 09</span>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Pathologic Predictors of IBTR</div>
+      <table class="dtable">
+        <thead><tr><th>Predictor</th><th>Risk Level</th></tr></thead>
+        <tr><td><strong>Positive / close margins</strong></td><td><span class="tag tag-high">MOST IMPORTANT</span></td></tr>
+        <tr><td>High nuclear grade</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>Comedo-type necrosis</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>Large tumor size (&gt;3 cm)</td><td><span class="tag tag-high">High</span></td></tr>
+        <tr><td>Young age (&lt;40)</td><td><span class="tag tag-mod">Moderate</span></td></tr>
+        <tr><td>Periductal fibrosis</td><td><span class="tag tag-mod">Moderate</span></td></tr>
+        <tr><td>ER negativity</td><td><span class="tag tag-mod">Moderate</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title">Oncotype DX DCIS (12-gene)</div>
+        <ul class="blist">
+          <li><strong>Low risk:</strong> Score &lt; 39</li>
+          <li><strong>Intermediate risk:</strong> Score 39–54</li>
+          <li><strong>High risk:</strong> Score ≥ 55</li>
+          <li>Validated in E5194 (650 women) and Rakovitch cohort (2,720 women)</li>
+          <li>Higher score → increased invasive AND noninvasive recurrence</li>
+          <li>Needs further prospective validation before routine use</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-title">DCISionRT (PreludeDx)</div>
+        <ul class="blist">
+          <li>7 IHC biomarkers + 4 clinicopathologic factors</li>
+          <li>Elevated Risk Group → significant RT benefit (invasive HR 0.3)</li>
+          <li>Goal: identify women who would NOT benefit from RT</li>
+          <li>Needs prospective validation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Van Nuys Prognostic Index (VNPI) — Silverstein</div>
+    <table class="dtable">
+      <thead><tr><th>Parameter</th><th>Score 1</th><th>Score 2</th><th>Score 3</th></tr></thead>
+      <tr><td class="key">Size</td><td>≤ 15 mm</td><td>16–40 mm</td><td>&gt; 41 mm</td></tr>
+      <tr><td class="key">Surgical margin</td><td>≥ 10 mm</td><td>1–9 mm</td><td>&lt; 1 mm</td></tr>
+      <tr><td class="key">Pathological grade</td><td>Non-high, no necrosis</td><td>Non-high, necrosis</td><td>High-grade ± necrosis</td></tr>
+      <tr><td class="key">Age</td><td>≥ 61 yrs</td><td>40–60 yrs</td><td>≤ 39 yrs</td></tr>
+    </table>
+    <table class="dtable" style="margin-top:.75rem">
+      <thead><tr><th>Total VNPI Score</th><th>Management Recommendation</th></tr></thead>
+      <tr><td><span class="tag tag-low">4–6</span></td><td>Excision alone — no RT benefit demonstrated</td></tr>
+      <tr><td><span class="tag tag-mod">7–9</span></td><td>RT provides 15% lower local recurrence — consider RT or re-excision if margin &lt; 10 mm</td></tr>
+      <tr><td><span class="tag tag-high">10–12</span></td><td>50% local recurrence rate — mastectomy recommended</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 10 — SURVEILLANCE
+──────────────────────────────────────────────────── -->
+<div class="section" id="s10">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--teal-dim);border:1px solid var(--teal)">📅</div>
+    <h2 class="section-title">Post-Treatment Surveillance</h2>
+    <span class="section-tag" style="background:var(--teal-dim);color:var(--teal);border:1px solid rgba(45,212,191,.3)">Section 10</span>
+  </div>
+
+  <div class="card">
+    <table class="dtable">
+      <thead><tr><th>Scenario</th><th>Schedule / Recommendation</th></tr></thead>
+      <tr><td class="key">After BCS + RT</td><td>Diagnostic mammogram <strong>6 months post-RT</strong> to establish new baseline, then annual bilateral mammograms</td></tr>
+      <tr><td class="key">After mastectomy</td><td>Annual contralateral diagnostic mammogram</td></tr>
+      <tr><td class="key">Clinical breast exam</td><td>Every 6 months × 5 years, then annually</td></tr>
+      <tr><td class="key">Contralateral new primary risk</td><td><strong>2–5× higher</strong> than first breast cancer risk after DCIS treatment</td></tr>
+      <tr><td class="key">Recurrence after BCS without RT</td><td>Re-excision to negative margins + postoperative RT</td></tr>
+      <tr><td class="key">Recurrence after BCS + RT</td><td>Mastectomy is the preferred treatment</td></tr>
+      <tr><td class="key">Invasive recurrence prognosis</td><td>8-yr disease-specific mortality 14.4%; distant disease probability 27.1% (Silverstein)</td></tr>
+    </table>
+  </div>
+
+  <div class="surv-grid" style="margin-top:1rem">
+    <div class="surv-card">
+      <span class="surv-pct">~50%</span>
+      <div class="surv-label">of all local recurrences are invasive cancers</div>
+      <div class="surv-note">Both NSABP B-17 and B-24</div>
+    </div>
+    <div class="surv-card">
+      <span class="surv-pct">3.3%</span>
+      <div class="surv-label">Breast cancer deaths at 12-yr FU (NSABP B-17)</div>
+      <div class="surv-note">Overall survival in DCIS is excellent</div>
+    </div>
+    <div class="surv-card">
+      <span class="surv-pct">5 yrs</span>
+      <div class="surv-label">Highest recurrence risk period</div>
+      <div class="surv-note">Vigilant surveillance in first 5 years</div>
+    </div>
+    <div class="surv-card">
+      <span class="surv-pct">2–5×</span>
+      <div class="surv-label">Higher contralateral primary risk vs. general population</div>
+      <div class="surv-note">Monitor contralateral breast lifelong</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 11 — MCQ PRACTICE BANK
+──────────────────────────────────────────────────── -->
+<div class="section" id="s11">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--orange-dim);border:1px solid var(--orange)">📝</div>
+    <h2 class="section-title">MCQ Practice Bank</h2>
+    <span class="section-tag" style="background:var(--orange-dim);color:var(--orange);border:1px solid rgba(251,146,60,.3)">Section 11</span>
+  </div>
+
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:1rem;">Sources: MCQs in General Surgical Oncology (Springer 2024) · DeVita Principles & Practice · MD Anderson Case Scenarios</div>
+
+  <details>
+    <summary>🟢 Springer MCQs — DCIS & LCIS Questions</summary>
+    <div class="details-body">
+      <div class="mcq-list">
+
+        <div class="mcq incorrect">
+          <div class="mcq-q">Q9. A 58-year-old postmenopausal woman with DCIS. Which statement is INCORRECT? Option C: "The average age of diagnosis is between 30 and 35 years."</div>
+          <div class="mcq-a">✗ C — INCORRECT statement</div>
+          <div class="mcq-exp">The average age of diagnosis for DCIS is 54–56 years, not 30–35. DCIS occurs primarily in postmenopausal women.</div>
+        </div>
+
+        <div class="mcq incorrect">
+          <div class="mcq-q">Q11. Which statement about DCIS is INCORRECT? Option A: "Mostly presents as a palpable mass or bloody nipple discharge."</div>
+          <div class="mcq-a">✗ A — INCORRECT statement</div>
+          <div class="mcq-exp">About 90% of DCIS is identified by microcalcifications on mammography. Palpable mass was the pre-screening era presentation.</div>
+        </div>
+
+        <div class="mcq incorrect">
+          <div class="mcq-q">Q7 (LCIS). Which statement is INCORRECT? Option B: "The time to develop invasive cancer is about 5 years."</div>
+          <div class="mcq-a">✗ B — INCORRECT statement</div>
+          <div class="mcq-exp">The time to develop invasive cancer from LCIS is 10–15 years, not 5 years.</div>
+        </div>
+
+        <div class="mcq incorrect">
+          <div class="mcq-q">Q13. Which LCIS statement is INCORRECT? Option A: "Is a premalignant lesion."</div>
+          <div class="mcq-a">✗ A — INCORRECT statement</div>
+          <div class="mcq-exp">LCIS is NOT premalignant — it is a bilateral risk marker (~1%/year risk). It does not necessarily progress to invasive cancer.</div>
+        </div>
+
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🟢 DeVita MCQs — DCIS Chapter</summary>
+    <div class="details-body">
+      <div class="mcq-list">
+
+        <div class="mcq correct">
+          <div class="mcq-q">Q7.12. Which statement about DCIS is TRUE? A: DCIS accounts for 15–30% of mammographically detected cancers.</div>
+          <div class="mcq-a">✓ A — TRUE</div>
+          <div class="mcq-exp">DCIS = 15–30% of mammographically detected cancers. Most common in women aged 49–69. Younger women have HIGHER (not lower) local recurrence risk. Routine SLN biopsy NOT recommended in BCS for nonpalpable DCIS (axillary involvement only 1–2%).</div>
+        </div>
+
+        <div class="mcq correct">
+          <div class="mcq-q">Q7.13. RT after lumpectomy for DCIS. Which is TRUE? D: None of the above.</div>
+          <div class="mcq-a">✓ D — None of the above</div>
+          <div class="mcq-exp">RT reduces BOTH invasive AND noninvasive IBTR after BCS for DCIS. It does NOT improve overall survival. Tamoxifen does not negate the benefit of RT.</div>
+        </div>
+
+        <div class="mcq correct">
+          <div class="mcq-q">Q7.16. Which is an absolute contraindication to BCS requiring RT? D: All of the above.</div>
+          <div class="mcq-a">✓ D — All of the above</div>
+          <div class="mcq-exp">Absolute contraindications: RT during pregnancy; diffuse suspicious/malignant microcalcifications; widespread disease not resectable through single incision with negative margins + good cosmesis.</div>
+        </div>
+
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🟠 MD Anderson Case Scenario MCQs</summary>
+    <div class="details-body">
+      <div class="mcq-list">
+
+        <div class="mcq correct">
+          <div class="mcq-q">Case 1 Q3. Which patient is appropriate for COMET Trial? D: 42-year-old female, intermediate-grade DCIS with comedonecrosis, ER+.</div>
+          <div class="mcq-a">✓ D — Correct</div>
+          <div class="mcq-exp">COMET includes grade 1 or 2 REGARDLESS of comedonecrosis, ER+, no invasion, age ≥40. Options A (invasive), B (ipsilateral recurrence), and C (microinvasion) all EXCLUDE from COMET.</div>
+        </div>
+
+        <div class="mcq correct">
+          <div class="mcq-q">Case 1 Q4. 52-year-old with scleroderma, high-grade DCIS, comedonecrosis, ER−. Appropriate management?</div>
+          <div class="mcq-a">✓ D — Skin-sparing mastectomy + SLN dissection</div>
+          <div class="mcq-exp">Scleroderma = relative contraindication to radiation → BCS not appropriate. SLN at mastectomy because lymphatic mapping impossible later if invasive found on final path.</div>
+        </div>
+
+        <div class="mcq correct">
+          <div class="mcq-q">Case 2 Q1. After core biopsy, which pathologic result warrants excisional biopsy? B: Pleomorphic LCIS.</div>
+          <div class="mcq-a">✓ B — PLCIS</div>
+          <div class="mcq-exp">Pleomorphic LCIS has higher progression rate → excision with negative margins required. ALH, flat epithelial atypia, and florid ductal hyperplasia do NOT typically require excision unless discordant with imaging.</div>
+        </div>
+
+        <div class="mcq correct">
+          <div class="mcq-q">Case 2 Q2. 58-year-old postmenopausal, intact uterus, osteopenia, LCIS on biopsy. Recommended medication?</div>
+          <div class="mcq-a">✓ D — Raloxifene</div>
+          <div class="mcq-exp">Tamoxifen: higher uterine cancer risk in postmenopausal women with intact uterus. AIs: higher osteoporosis risk in a patient already with osteopenia. Raloxifene provides equivalent invasive cancer risk reduction (NSABP P-2) with fewer endometrial events and favorable bone effect.</div>
+        </div>
+
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<!-- ────────────────────────────────────────────────────
+  SECTION 12 — CHEAT SHEET
+──────────────────────────────────────────────────── -->
+<div class="section" id="s12">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--rose-dim);border:1px solid var(--rose)">⚡</div>
+    <h2 class="section-title">Last-Night Cheat Sheet</h2>
+    <span class="section-tag" style="background:var(--rose-dim);color:var(--rose);border:1px solid rgba(251,113,133,.3)">Section 12</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Numbers to Memorize</div>
+    <div class="cheat-grid">
+      <div class="cheat-item"><span class="cheat-label">DCIS % of new breast cancers</span><span class="cheat-value">20–25%</span></div>
+      <div class="cheat-item"><span class="cheat-label">Screen-detected DCIS today</span><span class="cheat-value">80–85%</span></div>
+      <div class="cheat-item"><span class="cheat-label">Core biopsy DCIS → invasive on excision</span><span class="cheat-value">20%</span></div>
+      <div class="cheat-item"><span class="cheat-label">ADH upgrade to DCIS/invasive</span><span class="cheat-value">25–30%</span></div>
+      <div class="cheat-item"><span class="cheat-label">Adequate BCS margin (DCIS)</span><span class="cheat-value">≥ 2 mm</span></div>
+      <div class="cheat-item"><span class="cheat-label">RT relative IBTR reduction</span><span class="cheat-value">~50%</span></div>
+      <div class="cheat-item"><span class="cheat-label">RT effect on overall survival</span><span class="cheat-value">NONE</span></div>
+      <div class="cheat-item"><span class="cheat-label">Mastectomy LRR at 10 yrs</span><span class="cheat-value">2.6%</span></div>
+      <div class="cheat-item"><span class="cheat-label">BCS + RT LRR at 10 yrs</span><span class="cheat-value">13.6%</span></div>
+      <div class="cheat-item"><span class="cheat-label">BCS + RT + tamoxifen LRR</span><span class="cheat-value">9.7%</span></div>
+      <div class="cheat-item"><span class="cheat-label">LCIS annual invasive BC risk</span><span class="cheat-value">~1%/yr</span></div>
+      <div class="cheat-item"><span class="cheat-label">LCIS 15-yr cumulative risk</span><span class="cheat-value">20–30%</span></div>
+      <div class="cheat-item"><span class="cheat-label">ADH risk multiplier</span><span class="cheat-value">4–5×</span></div>
+      <div class="cheat-item"><span class="cheat-label">LCIS risk multiplier</span><span class="cheat-value">7–12×</span></div>
+      <div class="cheat-item"><span class="cheat-label">Pharmacologic Rx ASCO threshold</span><span class="cheat-value">5-yr risk ≥ 1.7%</span></div>
+      <div class="cheat-item"><span class="cheat-label">COMET inclusion age</span><span class="cheat-value">≥ 40 yrs</span></div>
+      <div class="cheat-item"><span class="cheat-label">DCIS untreated 10-yr risk (low grade)</span><span class="cheat-value">12.2%</span></div>
+      <div class="cheat-item"><span class="cheat-label">DCIS untreated 10-yr risk (high grade)</span><span class="cheat-value">17.6%</span></div>
+      <div class="cheat-item"><span class="cheat-label">Tamoxifen benefit in ER+ DCIS</span><span class="cheat-value">&gt;50% RR reduction</span></div>
+      <div class="cheat-item"><span class="cheat-label">LCIS time to invasive cancer</span><span class="cheat-value">10–15 years</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem">
+    <div class="card-title">Common Exam Traps — True or False?</div>
+    <div class="trap-grid">
+      <div class="trap-item">
+        <span class="trap-stmt">DCIS cannot metastasize</span>
+        <span class="trap-verdict verdict-partial">TRUE unless microinvasion</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">LCIS is a premalignant lesion</span>
+        <span class="trap-verdict verdict-false">FALSE — bilateral risk marker</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">RT improves OS in DCIS</span>
+        <span class="trap-verdict verdict-false">FALSE — reduces recurrence only</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">Mastectomy improves OS vs. BCS+RT</span>
+        <span class="trap-verdict verdict-false">FALSE — equivalent survival</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">APBI is equivalent to WBI in DCIS</span>
+        <span class="trap-verdict verdict-false">FALSE — B-39 did NOT show equivalence</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">ADH on core biopsy always needs excision</span>
+        <span class="trap-verdict verdict-false">FALSE — observe if well-sampled + no risk features</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">SLN routine in DCIS + BCS</span>
+        <span class="trap-verdict verdict-false">FALSE — only for high-risk features</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">ER− DCIS benefits from tamoxifen</span>
+        <span class="trap-verdict verdict-false">FALSE — no benefit in ER−</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">COMET allows high-grade DCIS</span>
+        <span class="trap-verdict verdict-false">FALSE — grade 1–2 only; no invasion</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">RT reduces only DCIS recurrence, not invasive</span>
+        <span class="trap-verdict verdict-false">FALSE — reduces BOTH invasive AND noninvasive</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">HER2 status important in DCIS management</span>
+        <span class="trap-verdict verdict-false">FALSE — NCCN 2026: HER2 not recommended in DCIS</span>
+      </div>
+      <div class="trap-item">
+        <span class="trap-stmt">LCIS most common presentation is microcalcifications</span>
+        <span class="trap-verdict verdict-false">FALSE — incidental finding on biopsy for another lesion</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div style="margin-bottom:.5rem">🎗️ Breast Cancer — Non-Invasive (DCIS) · KHCC Year 1 Study Hub</div>
+  <div>Based on MD Anderson Surgical Oncology Manual 7th Ed. · NCCN 2026 · Springer MCQs in General Surgical Oncology 2024 · DeVita Cancer Principles & Practice</div>
+  <div style="margin-top:.5rem">King Hussein Cancer Center · Radiation Oncology · Year 1 Examination Preparation</div>
+</footer>
+
+<script>
+// Smooth scroll for TOC links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){t.scrollIntoView({behavior:'smooth',block:'start'});
+    history.replaceState(null,null,a.getAttribute('href'));}
+  });
+});
+
+// Animate progress bars on load
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.prog-fill').forEach(b=>{
+    const w=b.style.width;b.style.width='0';
+    setTimeout(()=>{b.style.width=w;},100);
+  });
+});
+</script>
+</body>
+</html>
